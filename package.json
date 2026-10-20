@@ -1,0 +1,35 @@
+{
+  "name": "al-berakah-reminders",
+  "version": "1.0.0",
+  "description": "Al Berakah Due Dates & Reminders",
+  "main": "main.js",
+  "author": "Al Berakah",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win --publish never"
+  },
+  "devDependencies": {
+    "electron": "^44.9.1",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "com.alberakah.reminders",
+    "productName": "Al Berakah Reminders",
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "build/icon.png"
+    ]
+  }
+}
