@@ -230,13 +230,17 @@ render();
 const CFG=window.APP_CONFIG||{};
 function pendSave(){try{localStorage.setItem(LS+".pend",JSON.stringify(PEND))}catch(e){}}
 function addPend(t,id){PEND=PEND.filter(p=>p.id!==id);PEND.push({t,id});pendSave();setStatus()}
-let flushing=false;
-async function flush(){if(!sb||!user||flushing)return;flushing=true;try{for(const p of PEND.slice()){let r;
+let flushing=false,again=false,lastErr="";
+async function flush(){if(!sb||!user)return;if(flushing){again=true;return}flushing=true;
+ try{do{again=false;for(const p of PEND.slice()){let r;
   if(p.t==="del")r=await sb.from("reminders").delete().eq("id",p.id);
   else{const x=D.find(z=>z.id===p.id);if(x)r=await sb.from("reminders").upsert({id:x.id,data:toDoc(x),updated_at:new Date().toISOString()})}
-  if(r&&r.error)throw r.error;PEND=PEND.filter(q=>!(q.id===p.id&&q.t===p.t));pendSave()}}catch(e){}flushing=false;setStatus()}
+  if(r&&r.error)throw r.error;PEND=PEND.filter(q=>!(q.id===p.id&&q.t===p.t));pendSave()}}while(again);lastErr=""}
+ catch(e){lastErr=(e&&e.message)||"connection problem";again=false}
+ flushing=false;setStatus()}
+setInterval(()=>{if(PEND.length)flush()},15000);
 function setStatus(){const el=$("stt");if(!sb){el.textContent="⚠ Cloud sync is not set up yet – this device only. Open config.js and follow SETUP.txt";return}
- el.textContent=user?(PEND.length?"⏳ Waiting to sync ("+PEND.length+" change"+(PEND.length>1?"s":"")+")…":"✓ Synced live · "+user.email):"Please sign in"}
+ el.textContent=user?(PEND.length?"⏳ Waiting to sync ("+PEND.length+" change"+(PEND.length>1?"s":"")+")…"+(lastErr?" – problem: "+lastErr:""):"✓ Synced live · "+user.email):"Please sign in"}
 function showLogin(m){$("lg").classList.add("show");$("lgm").textContent=m||""}
 async function pull(){const r=await sb.from("reminders").select("id,data");if(r.error){toast("Could not load from the cloud – showing the saved copy");return}
  if(r.data.length===0&&D.length>0){D.forEach(x=>addPend("up",x.id));await flush();toast("Uploaded your "+D.length+" items to the cloud ✓")}
