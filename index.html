@@ -91,7 +91,7 @@ label{font-size:12px;color:var(--mu);display:block;margin:0 0 4px 2px}
 </style></head><body><div class="app">
 <aside class="side"><div class="logo"><span>Al Berakah</span></div>
 <button class="nvb on" data-p="tl"><span>📋</span>Timeline</button><button class="nvb" data-p="dn"><span>✅</span>Done</button><button class="nvb" data-p="tt"><span>📊</span>Totals</button><button class="nvb" data-p="cl"><span>🗓️</span>Calendar</button>
-<div class="sp"></div><button class="sb2" id="boss">📋 Copy reminder for my boss</button><button class="sb2" id="prt">🖨 Print weekly list (PDF)</button><button class="sb2" id="exp">⬇ Export to Excel (CSV)</button><button class="sb2" id="bk">💾 Auto-backup file</button><button class="sb2" id="bn">⬇ Backup now (download)</button><button class="sb2" id="rs">⬆ Restore backup</button><input type="file" id="rf" accept=".json,application/json" hidden><button class="sb2" id="th">🎨 Theme &amp; colors</button><div class="hint">Shortcuts: <b>N</b> new · <b>/</b> search · <b>1–4</b> tabs</div></aside>
+<div class="sp"></div><button class="sb2" id="boss">📋 Copy reminder for my boss</button><button class="sb2" id="prt">🖨 Print weekly list (PDF)</button><button class="sb2" id="exp">⬇ Export to Excel (CSV)</button><button class="sb2" id="so">🔒 Sign out</button><button class="sb2" id="bn">⬇ Backup now (download)</button><button class="sb2" id="rs">⬆ Restore backup</button><input type="file" id="rf" accept=".json,application/json" hidden><button class="sb2" id="th">🎨 Theme &amp; colors</button><div class="hint">Shortcuts: <b>N</b> new · <b>/</b> search · <b>1–4</b> tabs</div></aside>
 <div class="main">
 <div class="hero"><div class="hl"><div><small><b>AL BERAKAH GENERAL TRADING</b> · <span id="td"></span></small><h1>Due Dates &amp; Reminders</h1></div></div><div class="nx" id="nx"></div><div class="kp" id="kp"></div></div>
 <div class="bar"><input id="q" type="search" placeholder="🔍  Search company, cheque no., note or category"><select id="srt"><option value="date">Sort: Date</option><option value="amt">Sort: Amount</option><option value="co">Sort: Company</option></select><select id="cof"></select><div id="vw" style="display:flex;gap:6px"></div><div id="tf" style="display:flex;gap:6px"></div><button class="add" id="add">＋ Add</button></div>
@@ -111,12 +111,14 @@ label{font-size:12px;color:var(--mu);display:block;margin:0 0 4px 2px}
 </div><div class="sbt"><button class="g2" id="cx">Cancel</button><button id="sv">Save</button></div></div></div>
 <div class="ps" id="ps"><div class="pc"><select id="pr"><option value="7">Next 7 days</option><option value="30">Next 30 days</option><option value="90">Next 90 days</option><option value="9999">All pending</option></select><button id="pgo">🖨 Print / Save as PDF</button><button class="g2" id="pcl">Close</button><span style="color:#fff;font-size:12px">If nothing opens, press Ctrl+P and choose Save as PDF</span></div><div class="sheet" id="sheet"></div></div>
 <div class="ov" id="thm"><div class="md" style="max-width:460px"><h3>Theme &amp; colors</h3><label>Color</label><div class="thg" id="thg"></div><label style="margin-top:16px">Mode</label><div id="thmode" style="display:flex;gap:6px"></div><div class="sbt"><button class="g2" id="thx">Close</button></div></div></div>
+<div class="ov" id="lg" style="z-index:50;background:var(--bg)"><div class="md" style="max-width:400px"><h3 style="font-size:26px;color:var(--ac);text-align:center">Al Berakah</h3><div style="color:var(--mu);margin-bottom:14px;text-align:center">Due Dates &amp; Reminders · sign in</div><div class="f"><div class="full"><label>Email</label><input id="lge" type="email" autocomplete="username"></div><div class="full"><label>Password</label><input id="lgp" type="password" autocomplete="current-password"></div></div><div id="lgm" style="color:var(--rd);min-height:20px;margin-top:8px;font-size:13px"></div><div class="sbt"><button id="lgin">Sign in</button></div><div style="text-align:center"><button class="ic" id="lgup" style="margin-top:12px">First time? Create my account</button></div></div></div>
 <div class="toast" id="toast"></div>
+<script src="config.js"></script>
+<script src="supabase.js"></script>
 <script>
 const CO="AL BERAKAH GENERAL TRADING - L.L.C-O.P.C",ME="Sahala Muhammed";
 const TYPES=["Cheque (to pay)","Cheque (to receive)","Cheque (to deposit)","Loan installment","Payment / invoice due","Customer follow-up","Quotation follow-up","Delivery / shipment","Meeting / appointment","Renewal (license, visa, rent, insurance)","Task / to-do","Other (type your own)"];
-let D=[],ready=false,LS="berakah.v2",FH=null,FHok=false,bt=null;
-const SEED=[];
+let D=[],ready=false,LS="berakah.v3",sb=null,user=null,PEND=[],live=null;
 const $=id=>document.getElementById(id),f=n=>(+n||0).toLocaleString("en-US",{maximumFractionDigits:2}),mon=(n,c)=>f(n)+" "+(c||"AED");
 const P=s=>{const[y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d)},now=new Date(),T=new Date(now.getFullYear(),now.getMonth(),now.getDate());
 const iso=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
@@ -132,12 +134,11 @@ const sumBy=a=>{const m={};a.forEach(x=>{if(+x.a){m[x.cur]=(m[x.cur]||0)+ +x.a}}
 const amt=a=>a.reduce((s,x)=>s+(+x.a||0),0);
 const toDoc=x=>({id:x.id,title:x.t,chq:x.c||"",amount:x.a||0,cur:x.cur||"AED",date:x.d,type:x.ty,note:x.note||"",repeat:!!x.rep,status:x.done?"done":"pending",ch:x.ch||""});
 const fromDoc=o=>({id:o.id,t:o.title||"",c:o.chq||"",a:o.amount||0,cur:o.cur||"AED",d:o.date,ty:o.type||"Other",note:o.note||"",rep:!!o.repeat,done:o.status==="done",ch:o.ch||""});
-function lsSave(){try{localStorage.setItem(LS,JSON.stringify(D))}catch(e){}}
-function snapshotJSON(){return JSON.stringify({app:"al-berakah-reminders",version:2,saved:new Date().toISOString(),items:D},null,1)}
-function persist(){lsSave();clearTimeout(bt);bt=setTimeout(writeBackup,700)}
-async function writeBackup(){if(window.berakah){try{await window.berakah.save(snapshotJSON());FHok=true}catch(e){FHok=false}setStatus();return}if(!FH||!FHok)return;try{const w=await FH.createWritable();await w.write(snapshotJSON());await w.close();FHok=true}catch(e){FHok=false}setStatus()}
-function put(x,keep){if(!keep)x.ch=iso(T);const i=D.findIndex(z=>z.id===x.id);if(i<0)D.push(x);else D[i]=x;persist()}
-function rm(id){D=D.filter(z=>z.id!==id);persist()}
+let mt=null;
+function lsSave(){try{localStorage.setItem(LS,JSON.stringify(D))}catch(e){}if(window.berakah){clearTimeout(mt);mt=setTimeout(()=>{try{window.berakah.save(snapshotJSON()).catch(()=>{})}catch(e){}},600)}}
+function snapshotJSON(){return JSON.stringify({app:"al-berakah-reminders",version:3,saved:new Date().toISOString(),items:D},null,1)}
+function put(x,keep){if(!keep)x.ch=iso(T);const i=D.findIndex(z=>z.id===x.id);if(i<0)D.push(x);else D[i]=x;lsSave();addPend("up",x.id);flush()}
+function rm(id){D=D.filter(z=>z.id!==id);lsSave();addPend("del",id);flush()}
 const snap=()=>JSON.stringify(D),restore=s=>()=>{const o=JSON.parse(s);D.filter(z=>!o.some(y=>y.id===z.id)).forEach(z=>rm(z.id));o.forEach(y=>put({...y},1));render()};
 let tab="tl",view="up",tfl="all",cur=null,sel=null,edit=null,tt,SEL=new Set(),msgFor=null;
 const pend=()=>D.filter(x=>!x.done).sort((a,b)=>a.d.localeCompare(b.d));
@@ -226,27 +227,49 @@ $("ty").innerHTML=TYPES.map(t=>"<option>"+t+"</option>").join("");$("ty").onchan
 $("q").oninput=render;$("srt").onchange=render;$("cof").onchange=render;
 [$("ov"),$("thm")].forEach(o=>o.onclick=e=>{if(e.target===o)o.classList.remove("show")});
 render();
-function setStatus(){if(window.berakah){$("stt").textContent=FHok?"✓ Saved automatically in Documents › Al Berakah Reminders · a daily backup is kept":"⚠ Could not save to the Documents folder";return}$("stt").textContent="✓ Saved on this computer"+(FH?(FHok?" · auto-backup file is ON":" · auto-backup paused – click 💾 Auto-backup file"):" · set up 💾 Auto-backup file for extra safety")}
-function idb(){return new Promise((res,rej)=>{const r=indexedDB.open("berakah-meta",1);r.onupgradeneeded=()=>r.result.createObjectStore("kv");r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
-async function kvGet(k){const d=await idb();return new Promise(res=>{const q=d.transaction("kv").objectStore("kv").get(k);q.onsuccess=()=>res(q.result);q.onerror=()=>res(null)})}
-async function kvSet(k,v){const d=await idb();return new Promise(res=>{const t=d.transaction("kv","readwrite");t.objectStore("kv").put(v,k);t.oncomplete=()=>res(true);t.onerror=()=>res(false)})}
-document.addEventListener("click",async e=>{const t=e.target.closest("button");if(!t)return;
+const CFG=window.APP_CONFIG||{};
+function pendSave(){try{localStorage.setItem(LS+".pend",JSON.stringify(PEND))}catch(e){}}
+function addPend(t,id){PEND=PEND.filter(p=>p.id!==id);PEND.push({t,id});pendSave();setStatus()}
+let flushing=false;
+async function flush(){if(!sb||!user||flushing)return;flushing=true;try{for(const p of PEND.slice()){let r;
+  if(p.t==="del")r=await sb.from("reminders").delete().eq("id",p.id);
+  else{const x=D.find(z=>z.id===p.id);if(x)r=await sb.from("reminders").upsert({id:x.id,data:toDoc(x),updated_at:new Date().toISOString()})}
+  if(r&&r.error)throw r.error;PEND=PEND.filter(q=>!(q.id===p.id&&q.t===p.t));pendSave()}}catch(e){}flushing=false;setStatus()}
+function setStatus(){const el=$("stt");if(!sb){el.textContent="⚠ Cloud sync is not set up yet – this device only. Open config.js and follow SETUP.txt";return}
+ el.textContent=user?(PEND.length?"⏳ Waiting to sync ("+PEND.length+" change"+(PEND.length>1?"s":"")+")…":"✓ Synced live · "+user.email):"Please sign in"}
+function showLogin(m){$("lg").classList.add("show");$("lgm").textContent=m||""}
+async function pull(){const r=await sb.from("reminders").select("id,data");if(r.error){toast("Could not load from the cloud – showing the saved copy");return}
+ if(r.data.length===0&&D.length>0){D.forEach(x=>addPend("up",x.id));await flush();toast("Uploaded your "+D.length+" items to the cloud ✓")}
+ else if(r.data.length>0){D=r.data.map(z=>fromDoc({...z.data,id:z.id}));lsSave()}
+ ready=true;cur=null;render()}
+function subscribe(){if(live)sb.removeChannel(live);live=sb.channel("rem").on("postgres_changes",{event:"*",schema:"public",table:"reminders"},p=>{
+  if(p.eventType==="DELETE"){D=D.filter(z=>z.id!==p.old.id)}
+  else{const o=p.new&&p.new.data;if(!o)return;const x=fromDoc({...o,id:p.new.id}),i=D.findIndex(z=>z.id===x.id);if(i<0)D.push(x);else D[i]=x}
+  lsSave();render()}).subscribe()}
+async function afterLogin(session){user=session.user;$("lg").classList.remove("show");await flush();await pull();subscribe();setStatus()}
+async function replaceAll(items){const ids=new Set(items.map(x=>x.id));D.filter(z=>!ids.has(z.id)).forEach(z=>rm(z.id));items.forEach(x=>put({...x},1))}
+async function signOut(){if(!confirm("Sign out? This device's saved copy will be cleared (your cloud data stays safe)."))return;try{await sb.auth.signOut()}catch(e){}user=null;D=[];PEND=[];try{localStorage.removeItem(LS);localStorage.removeItem(LS+".pend")}catch(e){}render();showLogin()}
+$("lgin").onclick=async()=>{const e=$("lge").value.trim(),p=$("lgp").value;if(!sb){$("lgm").textContent="Cloud sync is not set up (see SETUP.txt)";return}if(!e||!p){$("lgm").textContent="Enter your email and password";return}
+ $("lgm").textContent="Signing in…";const r=await sb.auth.signInWithPassword({email:e,password:p});if(r.error){$("lgm").textContent=r.error.message;return}afterLogin(r.data.session)};
+$("lgup").onclick=async()=>{const e=$("lge").value.trim(),p=$("lgp").value;if(!sb){$("lgm").textContent="Cloud sync is not set up (see SETUP.txt)";return}if(!e||p.length<8){$("lgm").textContent="Enter your email and a password of at least 8 characters";return}
+ $("lgm").textContent="Creating account…";const r=await sb.auth.signUp({email:e,password:p});if(r.error){$("lgm").textContent=r.error.message;return}
+ if(r.data.session)afterLogin(r.data.session);else $("lgm").textContent="Account created. Check your email to confirm it, then press Sign in."};
+$("lgp").addEventListener("keydown",e=>{if(e.key==="Enter")$("lgin").click()});
+document.addEventListener("click",e=>{const t=e.target.closest("button");if(!t)return;
  if(t.id==="bn")dlSave("al-berakah-backup-"+iso(T)+".json",snapshotJSON());
- if(t.id==="rs")$("rf").click();
- if(t.id==="bk"){if(window.berakah){window.berakah.openFolder();return}try{if(FH&&!FHok){FHok=(await FH.requestPermission({mode:"readwrite"}))==="granted";if(FHok){writeBackup();toast("Auto-backup is ON again ✓");return}}
-  if(!window.showSaveFilePicker){toast("This browser can't auto-save to a file. Use Chrome or Edge, or use Backup now.");return}
-  FH=await showSaveFilePicker({suggestedName:"al-berakah-reminders-backup.json",types:[{description:"Backup file",accept:{"application/json":[".json"]}}]});FHok=true;await kvSet("fh",FH);await writeBackup();toast("Auto-backup is ON – every change is saved to that file ✓")}catch(er){if(er&&er.name!=="AbortError")toast("Could not set up the backup file")}}});
+ if(t.id==="rs")$("rf").click();if(t.id==="so")signOut()});
 $("rf").onchange=async e=>{const f=e.target.files[0];e.target.value="";if(!f)return;try{const o=JSON.parse(await f.text()),it=Array.isArray(o)?o:o.items;if(!Array.isArray(it))throw 0;
- if(!confirm("Replace your current list ("+D.length+" items) with the backup ("+it.length+" items)?"))return;D=it;persist();cur=null;render();toast("Backup restored ✓")}catch(er){toast("That file is not a valid backup")}};
-(async()=>{let raw=null,loaded=false;try{raw=localStorage.getItem(LS)}catch(e){}
- if(raw){try{D=JSON.parse(raw);loaded=Array.isArray(D)}catch(e){D=[]}}
- if(window.berakah){try{const tx=await window.berakah.load();if(tx){const o=JSON.parse(tx);if(o&&Array.isArray(o.items)){D=o.items;loaded=true}}}catch(e){}}
- try{if(!window.berakah)FH=await kvGet("fh");if(FH){FHok=(await FH.queryPermission({mode:"readwrite"}))==="granted";
-  if(!loaded&&FHok){const o=JSON.parse(await(await FH.getFile()).text());if(o&&Array.isArray(o.items)&&o.items.length){D=o.items;loaded=true;lsSave()}}}}catch(e){}
- if(!loaded){D=SEED.map(x=>({...x}));lsSave()}
- ready=true;render();if(window.berakah){$("bk").textContent="📂 Open data folder";$("bn").textContent="⬇ Save a copy of my data…";FHok=true;writeBackup()}setStatus();
+ if(!confirm("Replace your current list ("+D.length+" items) with the backup ("+it.length+" items)?"))return;await replaceAll(it);cur=null;render();toast("Backup restored ✓")}catch(er){toast("That file is not a valid backup")}};
+(async()=>{try{const raw=localStorage.getItem(LS);if(raw){D=JSON.parse(raw);if(!Array.isArray(D))D=[]}}catch(e){D=[]}
+ try{PEND=JSON.parse(localStorage.getItem(LS+".pend")||"[]")}catch(e){PEND=[]}
+ if(window.berakah&&!D.length){try{const tx=await window.berakah.load();if(tx){const o=JSON.parse(tx);if(o&&Array.isArray(o.items))D=o.items}}catch(e){}}
+ ready=true;render();
+ const ok=CFG.SUPABASE_URL&&CFG.SUPABASE_URL.indexOf("https://")===0&&CFG.SUPABASE_ANON_KEY&&CFG.SUPABASE_ANON_KEY.indexOf("PASTE")<0&&window.supabase;
+ if(ok){sb=window.supabase.createClient(CFG.SUPABASE_URL,CFG.SUPABASE_ANON_KEY);setStatus();
+  try{const g=await sb.auth.getSession();if(g.data&&g.data.session)afterLogin(g.data.session);else showLogin()}catch(e){showLogin()}
+  sb.auth.onAuthStateChange(ev=>{if(ev==="SIGNED_OUT"&&user){user=null;showLogin()}});window.addEventListener("online",flush)}
+ else setStatus();
  try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist()}catch(e){}
  if("serviceWorker" in navigator&&location.protocol.indexOf("http")===0)navigator.serviceWorker.register("sw.js").catch(()=>{});
 })();
-
 </script></body></html>
