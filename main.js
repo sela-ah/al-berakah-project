@@ -35,7 +35,7 @@ function createWindow() {
   const win = new BrowserWindow({
     width: 1400, height: 900, minWidth: 900, minHeight: 600,
     title: "Al Berakah – Due Dates & Reminders",
-    icon: path.join(__dirname, "build", "icon.png"),
+    icon: path.join(__dirname, "icon.png"),
     webPreferences: { preload: path.join(__dirname, "preload.js"), contextIsolation: true, nodeIntegration: false }
   });
   win.loadFile(path.join(__dirname, "index.html"));
