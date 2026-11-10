@@ -1,0 +1,20 @@
+name: Release Windows app
+# Publishes the installer on the repository's "Releases" page (a permanent download link).
+# Installed apps then offer to update themselves.
+# Before running: make sure "version" in package.json is higher than the last release.
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+      - run: npx electron-builder --win --publish always --config electron-builder.config.js
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
