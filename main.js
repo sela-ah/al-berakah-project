@@ -24,12 +24,34 @@ ipcMain.handle("save", (e, txt) => {
   return true;
 });
 ipcMain.handle("openFolder", () => { ensure(); return shell.openPath(dir); });
+ipcMain.handle("getAutoStart", () => app.getLoginItemSettings().openAtLogin);
+ipcMain.handle("setAutoStart", (e, on) => { app.setLoginItemSettings({ openAtLogin: !!on }); return app.getLoginItemSettings().openAtLogin; });
 ipcMain.handle("saveFile", async (e, name, data) => {
   const r = await dialog.showSaveDialog({ defaultPath: path.join(app.getPath("downloads"), name) });
   if (r.canceled || !r.filePath) return false;
   fs.writeFileSync(r.filePath, data);
   return true;
 });
+
+// Automatic updates (used when the installer comes from a GitHub Release).
+let autoUpdater = null;
+try { autoUpdater = require("electron-updater").autoUpdater; } catch (e) { autoUpdater = null; }
+function setupUpdates(win) {
+  if (!autoUpdater || !app.isPackaged) return;
+  try {
+    autoUpdater.autoDownload = true;
+    autoUpdater.on("error", () => {});
+    autoUpdater.on("update-downloaded", () => {
+      dialog.showMessageBox(win, {
+        type: "info", buttons: ["Restart now", "Later"], defaultId: 0, cancelId: 1,
+        title: "Update ready",
+        message: "A new version of Al Berakah Reminders is ready.",
+        detail: "Restart the app to finish updating. Your cheques are not affected."
+      }).then(r => { if (r.response === 0) autoUpdater.quitAndInstall(); });
+    });
+    autoUpdater.checkForUpdates().catch(() => {});
+  } catch (e) { /* updates are optional - never stop the app */ }
+}
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -40,6 +62,7 @@ function createWindow() {
   });
   win.loadFile(path.join(__dirname, "index.html"));
   win.webContents.setWindowOpenHandler(({ url }) => { shell.openExternal(url); return { action: "deny" }; });
+  win.webContents.once("did-finish-load", () => setupUpdates(win));
 }
 
 if (!app.requestSingleInstanceLock()) { app.quit(); }
