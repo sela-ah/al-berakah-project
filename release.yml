@@ -15,6 +15,12 @@ jobs:
         with:
           node-version: 20
       - run: npm install
-      - run: npx electron-builder --win --publish always --config electron-builder.config.js
+      - run: npx electron-builder --win --publish never --config electron-builder.config.js
+      - name: Publish to Releases
+        shell: bash
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          ls dist
+          gh release create "v$VERSION" "dist/Al-Berakah-Setup-$VERSION.exe" "dist/Al-Berakah-Setup-$VERSION.exe.blockmap" "dist/latest.yml" --title "Al Berakah Reminders $VERSION" --notes "Windows installer: download the .exe file below." --target "$GITHUB_SHA"
