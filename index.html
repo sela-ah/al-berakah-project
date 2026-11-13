@@ -4,9 +4,9 @@
 <title>Al Berakah – Due Dates &amp; Reminders</title>
 <link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#4a0b1c"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
 <style>
-:root{--bg:#f7f2f1;--card:#fffdfc;--tx:#2b2a33;--mu:#7f7c8a;--bd:#e7e1d6;--ac:#a11a38;--rd:#d4574f;--am:#c4811a;--bl:#3b6fb6;--sh:0 1px 2px rgba(60,50,30,.05),0 6px 20px rgba(60,50,30,.07);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1419;--card:#17202a;--tx:#e6edf5;--mu:#8b9bb0;--bd:#263241;--ac:#d03a58;--rd:#f87171;--am:#fbbf24;--bl:#7aa7e8;--sh:none;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0e1419;--card:#17202a;--tx:#e6edf5;--mu:#8b9bb0;--bd:#263241;--ac:#d03a58;--rd:#f87171;--am:#fbbf24;--bl:#7aa7e8;--sh:none;color-scheme:dark}
+:root{--pvbg:#e9e4df;--bg:#f7f2f1;--card:#fffdfc;--tx:#2b2a33;--mu:#7f7c8a;--bd:#e7e1d6;--ac:#a11a38;--rd:#d4574f;--am:#c4811a;--bl:#3b6fb6;--sh:0 1px 2px rgba(60,50,30,.05),0 6px 20px rgba(60,50,30,.07);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1419;--card:#17202a;--tx:#e6edf5;--mu:#8b9bb0;--bd:#263241;--ac:#d03a58;--rd:#f87171;--am:#fbbf24;--bl:#7aa7e8;--sh:none;--pvbg:#090d11;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1419;--card:#17202a;--tx:#e6edf5;--mu:#8b9bb0;--bd:#263241;--ac:#d03a58;--rd:#f87171;--am:#fbbf24;--bl:#7aa7e8;--sh:none;--pvbg:#090d11;color-scheme:dark}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
 button{font:inherit;cursor:pointer}
 .app{display:grid;grid-template-columns:230px 1fr;min-height:100vh}
@@ -36,7 +36,11 @@ h2{font-size:13px;letter-spacing:.8px;text-transform:uppercase;color:var(--mu);m
 .bars{display:flex;gap:8px;align-items:flex-end;height:130px}.bc{flex:1;text-align:center;min-width:0}.bc em{font-style:normal;font-size:11px;font-weight:700;display:block}
 .bc .b{background:var(--ac);border-radius:8px 8px 3px 3px;margin:3px auto 0;width:70%;min-height:4px}.bc span{display:block;font-size:11px;color:var(--mu);margin-top:6px}
 .hb{margin-bottom:11px}.hb div{display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px}.tr{height:9px;background:var(--bd);border-radius:9px;overflow:hidden}.tr i{display:block;height:100%;background:var(--ac)}
-.mh{display:flex;justify-content:space-between;align-items:baseline;margin:22px 2px 12px}.mh b{font-size:17px}.mh span{font-weight:700;font-size:14px;color:var(--ac)}
+.ms{margin-bottom:8px}.ms+.ms{margin-top:6px}
+.mh{display:flex;align-items:center;gap:10px;width:100%;border:0;background:var(--bg);color:var(--tx);text-align:left;margin:0;padding:14px 4px 10px;position:sticky;top:var(--stk,0px);z-index:3;border-radius:0}
+.mh .ch{width:18px;height:18px;flex:none;stroke:var(--mu);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}.ms.cl .mh .ch{transform:rotate(-90deg)}
+.mh b{flex:1;font-size:17px;min-width:0}.mh b small{font-size:13px;font-weight:600;color:var(--mu);margin-left:8px}.mh span{font-weight:700;font-size:14px;color:var(--ac);white-space:nowrap}
+.mh:hover .ch{stroke:var(--ac)}.ms.cl .mb{display:none}
 .row{display:grid;grid-template-columns:62px 24px 1fr;margin-bottom:12px}
 .d{text-align:right;padding-top:6px;line-height:1.1}.d b{display:block;font-size:26px;font-weight:800;color:var(--c)}.d span{font-size:12px;color:var(--mu);text-transform:uppercase;font-weight:700}
 .ln{position:relative}.ln:before{content:"";position:absolute;left:50%;top:0;bottom:-12px;width:2px;background:var(--bd);transform:translateX(-50%)}
@@ -78,21 +82,8 @@ label{font-size:12px;color:var(--mu);display:block;margin:0 0 4px 2px}
 .row{animation:up .28s ease both;transition:opacity .22s,transform .22s}.row.out{opacity:0;transform:translateX(18px)}
 .cd,.k,.chip,.nvb,.ok,.ic{transition:box-shadow .15s,background .15s,transform .15s}.cd:hover{transform:translateY(-1px)}
 .es{text-align:center;padding:44px 10px;color:var(--mu)}.es div{font-size:56px;margin-bottom:8px}.es b{display:block;color:var(--tx);font-size:17px;margin-bottom:4px}
-.ps{position:fixed;inset:0;background:rgba(2,6,23,.55);display:none;overflow:auto;z-index:25;padding:20px}.ps.show{display:block}
-.sheet{background:#fff;color:#111;max-width:820px;margin:0 auto;border-radius:12px;padding:30px}
-.sheet .hd{display:flex;gap:16px;align-items:center;border-bottom:3px solid var(--pa,#7a1230);padding-bottom:14px;margin-bottom:14px}.sheet .hd img{max-height:64px;max-width:170px;object-fit:contain}
-.sheet h4{margin:0 0 2px;font-size:18px}.sheet table{width:100%;border-collapse:collapse;font-size:13px}.sheet th{background:var(--pb,#f1ece6);text-align:left;padding:8px;border-bottom:2px solid #d9d2c7}.sheet td{padding:8px;border-bottom:1px solid #e7e1d6}.sheet .r{text-align:right}.sheet .tot td{font-weight:800;border-top:2px solid #111}
-.pc{max-width:820px;margin:0 auto 12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}.pc button{border:0;border-radius:10px;padding:10px 16px;font-weight:700;background:var(--ac);color:#fff}.pc .g2{background:var(--card);color:var(--tx)}
-.pcust{display:none;gap:10px;flex-basis:100%}.pcust.show{display:flex}
-.pcx{display:none;flex-basis:100%;gap:10px;flex-wrap:wrap;align-items:flex-end;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px}.pcx.show{display:flex}
-.pcols{display:flex;flex-wrap:wrap;gap:6px 16px}.pck{display:flex;align-items:center;gap:6px;color:#fff}.pcols input[type=checkbox]{width:auto}
-.sheet thead{display:table-header-group}.sheet tr{page-break-inside:avoid}.sheet th,.sheet .hd{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.sheet .gh td{background:#faf7f4;font-weight:700;padding-top:10px}.sheet .sub td{font-weight:700;border-top:1px solid #999}
-.sg{display:flex;gap:30px;margin-top:46px;page-break-inside:avoid}.sg div{flex:1;border-top:1px solid #111;padding-top:4px;font-size:12px;color:#333}
-.ft{margin-top:18px;border-top:1px solid #ccc;padding-top:6px;text-align:center;font-size:11px;color:#555}
 .ta{width:100%;min-height:150px;border:1px solid var(--bd);border-radius:12px;padding:10px;background:var(--card);color:var(--tx);font:inherit;resize:vertical}
 .hint{font-size:11px;color:var(--mu);padding:6px 4px 0}
-@media print{.app,.pc,.toast,.ov{display:none!important}.ps{position:static;display:block!important;background:#fff;padding:0;overflow:visible}.sheet{border-radius:0;max-width:none!important;padding:0}body{background:#fff}}
 .logo span{color:var(--ac);font-size:21px;letter-spacing:.3px}
 .thg{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:6px}.sw{display:flex;align-items:center;gap:10px;border:2px solid var(--bd);background:var(--card);color:var(--tx);border-radius:14px;padding:10px 12px;font-weight:600;text-align:left}.sw.on{border-color:var(--ac)}.sw i{width:28px;height:28px;border-radius:50%;display:block;flex-shrink:0}
 body{font-family:Inter,"Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,sans-serif;letter-spacing:.005em}
@@ -136,7 +127,6 @@ body{font-family:Inter,"Segoe UI Variable Text","Segoe UI",system-ui,-apple-syst
 .tmrow select{width:auto;padding:6px 8px;font-size:13px}.tmrow .ic{padding:6px 12px;font-size:13px}
 .tmadd{display:flex;gap:8px;margin-top:12px}.tmadd input{flex:1;min-width:0}.tmadd select{width:auto}.tmadd .ic{padding:6px 16px;font-weight:600;color:var(--tx)}
 .ro .add,.ro .ok,.ro [data-ed],.ro [data-cp],.ro [data-dl],.ro [data-un],.ro .cb,.ro .selbar,.ro #rsrow{display:none!important}
-.pc{align-items:flex-end}.pf{display:flex;flex-direction:column;gap:4px;flex:1;min-width:150px}.pf label{color:#d8dee9;font-size:12px;margin:0}.pf input,.pf select{width:100%}.ph{color:#d8dee9;font-size:12px;flex-basis:100%}
 .pset{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pset input{width:100%}.pset label{margin-bottom:4px}
 .pwf{display:flex;flex-direction:column;gap:8px;padding:6px 0 4px}.pwf input{width:100%}
 /* category column: refined thin edge. Date colour (red/orange/blue) = how soon. */
@@ -183,22 +173,94 @@ body{font-family:Inter,"Segoe UI Variable Text","Segoe UI",system-ui,-apple-syst
  .pset{grid-template-columns:1fr}.tmadd{flex-wrap:wrap}.mobonly{display:block}
  .toast{bottom:92px}
 }
+.ps{position:fixed;inset:0;background:var(--bg);display:none;z-index:25;flex-direction:column}.ps.show{display:flex}
+.pst-h{display:flex;align-items:center;gap:16px;padding:14px 24px;padding-top:calc(14px + env(safe-area-inset-top,0px));background:var(--card);border-bottom:1px solid var(--bd);flex:0 0 auto}
+.pst-t{flex:1;display:flex;flex-direction:column;min-width:0;gap:1px}.pst-t b{font-size:17px}.pst-t span{font-size:13px;color:var(--mu);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pst-x{border:1px solid var(--bd);background:transparent;color:var(--tx);border-radius:12px;padding:10px 16px;font-weight:600}
+.pst-go{display:flex;gap:9px;align-items:center;border:0;background:var(--ac);color:#fff;border-radius:12px;padding:11px 20px;font-weight:700;box-shadow:0 8px 20px -8px var(--ac)}
+.lblbtn{display:inline-flex;align-items:center;justify-content:center;cursor:pointer;margin:0}
+.cr{display:grid;grid-template-columns:22px 86px minmax(0,1fr) 112px 118px auto;gap:12px;align-items:center;background:var(--card);border-radius:12px;padding:8px 12px;margin-bottom:6px;box-shadow:inset 4px 0 0 var(--gc,var(--c)),0 1px 2px rgba(20,20,40,.06);transition:opacity .22s,transform .22s}
+.cr.out{opacity:0;transform:translateX(18px)}.cr .cb{margin:0}.cr .cbs{width:18px}
+.cr .cdt{font-size:13px;line-height:1.15;font-weight:700;color:var(--c)}.cr .cdt b{font-size:18px;font-weight:800}.cr .cdt small{display:block;color:var(--mu);font-size:11px;text-transform:uppercase;font-weight:700}
+.cr .cnm{min-width:0}.cr .cnm b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.cr .cnm small{display:block;color:var(--mu);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.cr .cnm .cat{margin-left:0}
+.cr .cam{text-align:right;font-weight:800;color:var(--ac);white-space:nowrap}.cr .tg{justify-self:start}
+.cr .cac{display:flex;gap:4px;align-items:center}.cr .cac .ic{padding:4px 7px}.cr .cac .ic svg{width:15px;height:15px}.cr .cac .ok{padding:3px 9px}
+.cr:hover,.cr:focus-within{box-shadow:inset 4px 0 0 var(--gc,var(--c)),0 1px 2px rgba(20,20,40,.08),0 6px 16px rgba(20,20,40,.08)}
+.flash{animation:fl 1.6s ease}@keyframes fl{0%,70%{outline:2px solid var(--ac);outline-offset:4px;border-radius:14px}100%{outline:2px solid transparent;outline-offset:4px}}
+.jmp{display:none;flex-direction:column;gap:1px;margin:2px 0 8px 20px;padding-left:10px;border-left:1px solid var(--bd);max-height:34vh;overflow:auto}
+body[data-pg="tl"] .jmp:not(:empty){display:flex}
+.jb{display:flex;justify-content:space-between;align-items:center;gap:8px;border:0;background:transparent;color:var(--mu);padding:6px 10px;border-radius:8px;font-size:13px;font-weight:600;text-align:left;width:100%}
+.jb em{font-style:normal;font-size:11px;font-weight:700;background:var(--bg);border:1px solid var(--bd);border-radius:99px;padding:0 7px;color:var(--mu)}
+.jb:hover{background:var(--ts,rgba(161,26,56,.1));color:var(--tx)}.jb.on{color:var(--ac);background:var(--ts,rgba(161,26,56,.12))}.jb.on em{border-color:var(--ac);color:var(--ac)}.jb.od{color:var(--rd)}
+.jmpm{display:none;gap:8px;overflow-x:auto;padding:10px 0 8px;position:sticky;top:0;z-index:4;background:var(--bg)}.jmpm:empty{display:none!important}
+.jmpm .jb{width:auto;flex:none;border:1px solid var(--bd);background:var(--card);border-radius:99px;padding:6px 12px}
+body:not([data-pg="tl"]) .jmpm{display:none!important}body:not([data-pg="tl"]) #dv{display:none}
+.ntt{display:flex;align-items:center;gap:10px}.nav .ntt button{width:auto;height:30px;padding:0 13px;font-size:13px;font-weight:700;border-radius:99px;color:var(--ac)}
+.calj{display:flex;justify-content:flex-end;margin:0 0 10px}.calj .ic{padding:6px 12px;font-weight:600;color:var(--ac)}
+@media (max-width:900px){.jmp{display:none!important}.jmpm{display:flex}.cr{grid-template-columns:22px minmax(0,1fr) auto;grid-template-areas:"cb nm am" "cb dt tg" "cb ac ac";row-gap:3px;padding:10px 12px}.cr>.cb,.cr>.cbs{grid-area:cb}.cr .cdt{grid-area:dt;display:flex;gap:6px;align-items:baseline}.cr .cdt small{display:inline}.cr .cnm{grid-area:nm}.cr .cam{grid-area:am}.cr .tg{grid-area:tg;justify-self:end}.cr .cac{grid-area:ac}}
+.pst-go svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.pst-go .pbs{display:none}.pst-go span{white-space:nowrap}
+.pst-m{flex:1;min-height:0;display:grid;grid-template-columns:400px 1fr}
+.pst-s{overflow:auto;background:var(--card);border-right:1px solid var(--bd);display:flex;flex-direction:column}
+.st{border-bottom:1px solid var(--bd)}
+.st summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:17px 24px;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--mu)}
+.st summary::-webkit-details-marker{display:none}
+.st summary::after{content:"";width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin-top:-4px;transition:transform .2s}.st[open] summary::after{transform:rotate(-135deg);margin-top:3px}
+.stb{padding:0 24px 10px}
+.pst-s .fl{margin-bottom:18px}.pst-s .fl>label,.fh label{display:block;font-size:12px;font-weight:700;color:var(--mu);margin:0 0 7px}
+.pst-s input:not([type=checkbox]),.pst-s select{width:100%}
+.fh{display:flex;justify-content:space-between;align-items:baseline}.fh label{margin:0 0 7px}.fc{font-size:12px;color:var(--ac);font-weight:700}
+.pcust{display:none;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin-top:8px;color:var(--mu);font-size:13px}.pcust.show{display:grid}
+.cl{border:1px solid var(--bd);border-radius:12px;max-height:200px;overflow:auto;margin-top:8px;background:var(--card)}
+.cl label{display:flex;align-items:center;gap:10px;padding:9px 12px;cursor:pointer;font-size:14px;color:var(--tx);margin:0;border-bottom:1px solid var(--bd)}.cl label:last-child{border-bottom:0}
+.cl label:hover{background:var(--ts,rgba(161,26,56,.08))}.cl input{accent-color:var(--ac);width:16px;height:16px;margin:0;flex:none}
+.cl span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cl em{font-style:normal;font-size:12px;color:var(--mu);background:var(--card);border:1px solid var(--bd);border-radius:99px;padding:1px 9px;font-weight:600}.cl label.z{opacity:.45}.cn{padding:14px;text-align:center;color:var(--mu);font-size:13px}
+.fa{display:flex;gap:16px;margin-top:6px}.lk{border:0;background:transparent;color:var(--ac);font-weight:700;font-size:13px;padding:4px 0}
+.seg{display:flex;background:var(--bg);border:1px solid var(--bd);border-radius:12px;padding:3px;gap:2px}
+.seg button{flex:1;border:0;background:transparent;color:var(--mu);border-radius:9px;padding:8px 6px;font-weight:600;font-size:13px}
+.seg button.on{background:var(--card);color:var(--ac);box-shadow:0 1px 3px rgba(0,0,0,.16);font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.cc{border:1px solid var(--bd);background:var(--card);color:var(--mu);border-radius:99px;padding:6px 13px;font-size:13px;font-weight:600}
+.cc.on{background:var(--ts,rgba(161,26,56,.12));border-color:var(--ac);color:var(--ac)}.cc.on::before{content:"✓ ";font-weight:800}
+.swc{display:flex;gap:8px;flex-wrap:wrap}
+.swc button{display:flex;align-items:center;gap:8px;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:99px;padding:6px 14px 6px 8px;font-size:13px;font-weight:600}
+.swc button::before{content:"";width:16px;height:16px;border-radius:50%;background:var(--c)}.swc button.on{border-color:var(--ac);box-shadow:0 0 0 3px var(--ts,rgba(161,26,56,.2))}
+.two2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.swt{position:relative;display:flex;justify-content:space-between;align-items:center;padding:10px 0;font-size:14px;cursor:pointer;margin:0;border-bottom:1px solid var(--bd)}.swt:last-child{border-bottom:0}
+.swt input{position:absolute;opacity:0;width:0;height:0}.swt i{width:40px;height:24px;border-radius:99px;background:var(--bd);position:relative;transition:background .2s;flex:none}
+.swt i::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:left .2s}
+.swt input:checked+i{background:var(--ac)}.swt input:checked+i::after{left:19px}.swt input:focus-visible+i{outline:2px solid var(--ac);outline-offset:2px}
+.pst-f{position:sticky;bottom:0;margin-top:auto;background:var(--card);border-top:1px solid var(--bd);padding:12px 24px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--mu)}
+.pst-p{overflow:auto;background:var(--pvbg,#e9e4df);padding:32px 28px 60px}
+.sheet{background:#fff;color:#111;margin:0 auto;border-radius:3px;padding:15mm;box-shadow:0 1px 3px rgba(0,0,0,.12),0 24px 60px -14px rgba(50,20,20,.4)}
+.sheet .hd{display:flex;gap:16px;align-items:center;border-bottom:3px solid var(--pa,#7a1230);padding-bottom:14px;margin-bottom:16px}.sheet .hd img{max-height:64px;max-width:170px;object-fit:contain}
+.sheet h4{margin:0 0 3px;font-size:20px;letter-spacing:.2px}
+.sheet table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+.sheet th{background:var(--pb,#f1ece6);color:var(--pa,#7a1230);text-transform:uppercase;font-size:.78em;letter-spacing:.7px;text-align:left;padding:9px 10px;border-bottom:2px solid var(--pa,#7a1230)}
+.sheet td{padding:9px 10px;border-bottom:1px solid #ece7e1;vertical-align:top}.sheet .r{text-align:right;white-space:nowrap}
+.sheet thead{display:table-header-group}.sheet tr{page-break-inside:avoid}.sheet th,.sheet .hd{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.sheet .gh{break-after:avoid;page-break-after:avoid}.sheet .gh td{break-after:avoid;background:#faf7f4;font-weight:700;border-left:4px solid var(--pa,#7a1230);padding-top:11px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.sheet .sub td{font-weight:700;background:#fcfaf8;border-bottom:1px solid #d9d2c7}.sheet .tot td{font-weight:800;border-top:2px solid var(--pa,#7a1230);border-bottom:0;font-size:1.05em}
+.sg{display:flex;gap:30px;margin-top:50px;page-break-inside:avoid}.sg div{flex:1;border-top:1px solid #111;padding-top:5px;font-size:12px;color:#333}
+.ft{margin-top:20px;border-top:1px solid #ccc;padding-top:7px;text-align:center;font-size:11px;color:#555}
+@media (max-width:900px){.pst-m{display:block;overflow:auto}.pst-s{overflow:visible;border-right:0;border-bottom:1px solid var(--bd)}.pst-f{position:static}.pst-p{overflow:visible;padding:16px 10px 80px}.pst-h{padding:12px 14px;padding-top:calc(12px + env(safe-area-inset-top,0px));gap:10px}.pst-go .pbl{display:none}.pst-go .pbs{display:inline}.pst-go{padding:11px 16px}.pst-x{padding:10px 12px}.stb{padding:0 18px 8px}.st summary{padding:15px 18px}.pst-f{padding:12px 18px}}
+@media print{.toast,.ov{display:none!important}.ps:not(.show){display:none!important}body:has(.ps.show) .app{display:none!important}.ps.show{position:static;display:block!important;background:#fff}.pst-h,.pst-s{display:none!important}.pst-m{display:block}.pst-p{overflow:visible;background:#fff;padding:0}.sheet{width:auto!important;min-height:0!important;zoom:1!important;box-shadow:none;border-radius:0;padding:0}body{background:#fff}}
 </style></head><body><div class="app">
 <aside class="side"><div class="brand"><div class="mark">AB</div><div><div class="bn1">Al Berakah</div><div class="bn2">Due dates &amp; reminders</div></div></div>
 <nav class="menu"><div class="mt">Workspace</div>
-<button class="nvb on" data-p="tl"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg><span>Timeline</span></button><button class="nvb" data-p="dn"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>Done</span></button><button class="nvb" data-p="tt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg><span>Totals</span></button><button class="nvb" data-p="cl"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Calendar</span></button><button class="nvb" data-p="hs"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>History</span></button>
+<button class="nvb on" data-p="tl"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg><span>Timeline</span></button><div class="jmp" id="jmp" aria-label="Jump to"></div><button class="nvb" data-p="dn"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>Done</span></button><button class="nvb" data-p="tt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg><span>Totals</span></button><button class="nvb" data-p="cl"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Calendar</span></button><button class="nvb" data-p="hs"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>History</span></button>
 <div class="mt">Quick actions</div>
 <button class="qa" id="boss"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Copy weekly reminder</span></button><button class="qa" id="prt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg><span>Print list</span></button><button class="qa" id="exp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 21h16"/></svg><span>Export to Excel</span></button></nav>
 <div class="sp"></div><button class="qa" id="set"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg><span>Settings</span></button>
 <div class="usr"><div class="av" id="uav">?</div><div class="ut"><div id="unm">Not signed in</div><div class="us" id="ust"></div></div></div></aside>
 <div class="main">
 <div class="hero"><div class="hl"><div><small><b>AL BERAKAH GENERAL TRADING</b> · <span id="td"></span></small><h1>Due Dates &amp; Reminders</h1></div></div><div class="nx" id="nx"></div><div class="kp" id="kp"></div></div>
-<div class="bar"><div class="br1"><input id="q" type="search" placeholder="Search company, cheque no., note or category"><select id="srt"><option value="date">Sort: Date</option><option value="amt">Sort: Amount</option><option value="co">Sort: Company</option></select><select id="cof"></select><button class="add" id="add">+ New reminder</button></div><div class="br2"><div id="tf" class="ctabs"></div><div id="vw" class="vseg"></div></div><div id="sf" class="subrow"></div></div>
-<div class="body"><div id="rem"></div><div id="bkb"></div><div class="selbar" id="selbar"></div>
+<div class="bar"><div class="br1"><input id="q" type="search" placeholder="Search company, cheque no., note or category"><select id="srt"><option value="date">Sort: Date</option><option value="amt">Sort: Amount</option><option value="co">Sort: Company</option></select><select id="cof"></select><button class="add" id="add">+ New reminder</button></div><div class="br2"><div id="tf" class="ctabs"></div><div id="vw" class="vseg"></div><div id="dv" class="vseg" title="List style"></div></div><div id="sf" class="subrow"></div></div>
+<div class="body"><div class="jmpm" id="jmpm"></div><div id="rem"></div><div id="bkb"></div><div class="selbar" id="selbar"></div>
 <div class="pg on" id="tl"><div class="two"><div id="list"></div><div class="pn"><div class="cp"><h2>Amounts by month</h2><div class="bars" id="bars"></div></div><div class="cp"><h2>Top companies</h2><div id="tc"></div></div></div></div></div>
 <div class="pg" id="dn"><h2 id="dh"></h2><div class="cp" id="dl"></div></div>
 <div class="pg" id="tt"><div class="two"><div><div class="cp"><h2>By company</h2><div id="co"></div></div></div><div><div class="cp"><h2>By month</h2><div class="bars" id="bars2"></div></div><div class="cp"><h2>By category</h2><div id="cg"></div></div></div></div></div>
-<div class="pg" id="cl"><div style="height:14px"></div><div class="cal"><div class="nav"><button data-n="-1" aria-label="Previous month">‹</button><b id="mt"></b><button data-n="1" aria-label="Next month">›</button></div><div class="g" id="g"></div></div><h2 id="sh"></h2><div id="sl" style="max-width:560px"></div></div>
+<div class="pg" id="cl"><div style="height:14px"></div><div class="cal"><div class="nav"><button data-n="-1" aria-label="Previous month">‹</button><div class="ntt"><b id="mt"></b><button id="ctoday">Today</button></div><button data-n="1" aria-label="Next month">›</button></div><div class="g" id="g"></div></div><h2 id="sh"></h2><div id="sl" style="max-width:560px"></div></div>
 <div class="pg" id="hs"><div class="cp"><h2 style="margin:0 0 6px">Change history</h2><div class="m" id="hsm" style="margin-bottom:8px"></div><div id="hsl"></div></div></div>
 <div class="note" id="stt">Loading…</div></div></div></div>
 <div class="ov" id="ov"><div class="md"><h3 id="ft">New reminder</h3><div class="f">
@@ -209,11 +271,34 @@ body{font-family:Inter,"Segoe UI Variable Text","Segoe UI",system-ui,-apple-syst
 <div><label>Cheque number (optional)</label><input id="cn"></div><div><label>Repeat</label><select id="rp"><option value="0">One time</option><option value="1">Every month</option></select></div>
 <div class="full"><label>Notes (optional)</label><input id="nt" placeholder="e.g. post-dated, ask boss before paying"></div>
 </div><div class="sbt"><button class="g2" id="cx">Cancel</button><button id="sv">Save</button></div></div></div>
-<div class="ps" id="ps"><div class="pc"><div class="pf" style="flex:2"><label>Heading (you can change it)</label><input id="ptt"></div><div class="pf"><label>Category</label><select id="pct"></select></div><div class="pf"><label>Period</label><select id="pr"><option value="7">Next 7 days</option><option value="30" selected>Next 30 days</option><option value="90">Next 90 days</option><option value="month">This month</option><option value="9999">All dates</option><option value="custom">Custom dates…</option></select></div><div class="pf"><label>Prepared by</label><input id="pby"></div><div class="pcust" id="pcust"><div class="pf"><label>From</label><input type="date" id="pfrom" class="po"></div><div class="pf"><label>To</label><input type="date" id="pto" class="po"></div></div><button class="g2" id="pcx0">Customise ▾</button><button id="pgo">Print / Save as PDF</button><button class="g2" id="pcl">Close</button><div class="pcx" id="pcx"><div class="pf"><label>Include</label><select id="pst" class="po"><option value="pending">Pending only</option><option value="done">Completed only</option><option value="all">Pending and completed</option></select></div><div class="pf"><label>Sort by</label><select id="pso" class="po"><option value="date">Date</option><option value="company">Company</option><option value="amount">Amount (largest first)</option><option value="cat">Category</option></select></div><div class="pf"><label>Group by</label><select id="pgr" class="po"><option value="none">No grouping</option><option value="cat">Category (with subtotals)</option><option value="month">Month (with subtotals)</option></select></div><div class="pf"><label>Paper</label><select id="por" class="po"><option value="portrait">A4 portrait</option><option value="landscape">A4 landscape</option></select></div><div class="pf"><label>Text size</label><select id="pfs" class="po"><option value="small">Small</option><option value="normal">Normal</option><option value="large">Large</option></select></div><div class="pf"><label>Colour</label><select id="pcol" class="po"><option value="maroon">Maroon</option><option value="navy">Navy</option><option value="black">Black &amp; white</option></select></div><div class="pf" style="flex-basis:100%"><label>Columns to print</label><div class="pcols" id="pcols"></div></div><div class="pf" style="flex-basis:100%"><label>Show on the page</label><div class="pcols"><label class="pck"><input type="checkbox" class="po" id="phco"> Company name</label><label class="pck"><input type="checkbox" class="po" id="phco2"> Second line (Arabic name)</label><label class="pck"><input type="checkbox" class="po" id="phlogo"> Logo</label><label class="pck"><input type="checkbox" class="po" id="psig"> Signature boxes</label></div></div><div class="pf" style="flex:2"><label>Note under the heading (optional)</label><input id="pnote" class="po" maxlength="200"></div><div class="pf" style="flex:2"><label>Footer text (optional)</label><input id="pfoot" class="po" maxlength="200"></div><button class="g2" id="prst">Reset to default</button></div><div class="ph">Your choices are remembered on this device. If nothing opens, press Ctrl+P and choose Save as PDF</div></div><div class="sheet" id="sheet"></div></div>
+<div class="ps" id="ps"><header class="pst-h"><button class="pst-x" id="pcl">✕ Close</button><div class="pst-t"><b>Print list</b><span id="pstsum"></span></div><button class="pst-go" id="pgo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="9" rx="2"/><path d="M7 14h10v7H7z"/></svg><span class="pbl">Print / Save as PDF</span><span class="pbs">Print</span></button></header>
+<div class="pst-m"><aside class="pst-s">
+<details class="st" open><summary>What to print</summary><div class="stb">
+<div class="fl"><label>Heading</label><input id="ptt"></div>
+<div class="fl"><div class="fh"><label>Companies</label><span class="fc" id="pcosn"></span></div><input id="pcosq" placeholder="Search companies…" autocomplete="off"><div class="cl" id="pcos"></div><div class="fa"><button class="lk" id="pcosall">Select all</button><button class="lk" id="pcosclr">Clear</button></div></div>
+<div class="fl"><label>Dates</label><select id="pr"><option value="7">Next 7 days</option><option value="30" selected>Next 30 days</option><option value="90">Next 90 days</option><option value="month">This month</option><option value="nmonth">Next month</option><option value="9999">All dates</option><option value="custom">Custom dates…</option></select><div class="pcust" id="pcust"><input type="date" id="pfrom" class="po"><span>to</span><input type="date" id="pto" class="po"></div></div>
+<div class="fl"><label>Category</label><select id="pct"></select></div>
+<div class="fl"><label>Status</label><div class="seg" data-k="st"><button data-v="pending">Pending</button><button data-v="done">Completed</button><button data-v="all">Both</button></div></div>
+</div></details>
+<details class="st" open><summary>Columns &amp; order</summary><div class="stb">
+<div class="fl"><label>Columns</label><div class="chips" id="pcols"></div></div>
+<div class="two2"><div class="fl"><label>Sort by</label><select id="pso" class="po"><option value="date">Date</option><option value="company">Company</option><option value="amount">Amount</option><option value="cat">Category</option></select></div><div class="fl"><label>Group by</label><select id="pgr" class="po"><option value="none">No grouping</option><option value="cat">Category</option><option value="month">Month</option></select></div></div>
+</div></details>
+<details class="st" open><summary>Page &amp; style</summary><div class="stb">
+<div class="fl"><label>Paper</label><div class="seg" data-k="or"><button data-v="portrait">A4 portrait</button><button data-v="landscape">A4 landscape</button></div></div>
+<div class="fl"><label>Text size</label><div class="seg" data-k="fs"><button data-v="small">Small</button><button data-v="normal">Normal</button><button data-v="large">Large</button></div></div>
+<div class="fl"><label>Colour</label><div class="swc" data-k="col"><button data-v="maroon" style="--c:#7a1230">Maroon</button><button data-v="navy" style="--c:#1f3a6b">Navy</button><button data-v="black" style="--c:#111">Black &amp; white</button></div></div>
+<div class="fl"><label>Show on the page</label><label class="swt"><span>Company name</span><input type="checkbox" class="po" id="phco"><i></i></label><label class="swt"><span>Second line (Arabic name)</span><input type="checkbox" class="po" id="phco2"><i></i></label><label class="swt"><span>Logo</span><input type="checkbox" class="po" id="phlogo"><i></i></label><label class="swt"><span>Signature boxes</span><input type="checkbox" class="po" id="psig"><i></i></label></div>
+<div class="fl"><label>Prepared by</label><input id="pby"></div>
+<div class="fl"><label>Note under the heading</label><input id="pnote" class="po" maxlength="200" placeholder="Optional"></div>
+<div class="fl"><label>Footer text</label><input id="pfoot" class="po" maxlength="200" placeholder="Optional, e.g. phone or address"></div>
+</div></details>
+<div class="pst-f"><button class="lk" id="prst">Reset to default</button><span>Choices are saved on this device</span></div>
+</aside><main class="pst-p" id="pstp"><div class="sheet" id="sheet"></div></main></div></div>
 <div class="ov" id="stm"><div class="md" style="max-width:600px;max-height:92vh;overflow:auto"><div class="sth"><h3>Settings</h3><button class="ic" id="stx" aria-label="Close">✕</button></div>
 <div class="ssec"><div class="sst">Appearance</div><div class="approw"><button class="thbtn" id="thbtn" aria-expanded="false"><span class="sw18" id="swp"></span><span id="thname">Theme</span><span class="chev">▾</span></button><select id="thmsel" aria-label="Light or dark"><option value="auto">Auto</option><option value="light">Light</option><option value="dark">Dark</option></select></div><div class="thpal" id="thpal" style="display:none"></div></div>
 <div class="ssec" id="teamsec" style="display:none"><div class="sst">Team &amp; access</div><div class="m" style="margin-bottom:10px">Everyone listed here sees the same cheques. You decide who can edit and who can only view.</div><div id="tmlist"></div><div class="tmadd"><input id="tme" type="email" placeholder="Email of the person"><select id="tmr"><option value="editor">Editor</option><option value="viewer">Viewer</option><option value="admin">Administrator</option></select><button class="ic" id="tmadd">Add</button></div><div class="m" style="margin-top:8px">First create their login in Supabase (Authentication › Users › Add user), then add their email here. To reset someone's password, use Authentication › Users in Supabase.</div></div>
-<div class="ssec"><div class="sst">Printing</div><div class="m" style="margin-bottom:8px">Used at the top of every printed list. More choices (columns, paper, colour, signature boxes) are in the print window under Customise.</div><div class="pset"><div><label>Company name</label><input id="pco"></div><div><label>Second line (optional, e.g. Arabic name)</label><input id="pco2" dir="auto"></div><div><label>Prepared by</label><input id="pby0"></div><div><label>Default heading</label><input id="ptt0"></div><div style="grid-column:1/-1"><label>Logo (optional, shown at the top of printouts)</label><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span id="plogov"></span><input type="file" id="plogo" accept="image/png,image/jpeg,image/webp,image/gif" style="width:auto"><button class="ic" id="plogox">Remove</button></div></div></div></div>
+<div class="ssec"><div class="sst">Printing</div><div class="m" style="margin-bottom:8px">Used at the top of every printed list. More choices (companies, dates, columns, paper, colour, signature boxes) are in the print window.</div><div class="pset"><div><label>Company name</label><input id="pco"></div><div><label>Second line (optional, e.g. Arabic name)</label><input id="pco2" dir="auto"></div><div><label>Prepared by</label><input id="pby0"></div><div><label>Default heading</label><input id="ptt0"></div><div style="grid-column:1/-1"><label>Logo (optional, shown at the top of printouts)</label><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span id="plogov"></span><label class="ic lblbtn" for="plogo">Choose picture</label><input type="file" id="plogo" hidden accept="image/png,image/jpeg,image/webp,image/gif"><button class="ic" id="plogox">Remove</button></div></div></div></div>
 <div class="ssec"><div class="sst">Reminders</div><div class="srow"><div><b>Due-date alerts</b><div class="m" id="almsg">Show a notification for cheques that are overdue, due today or due tomorrow (while the app is open)</div></div><label class="tgl"><input type="checkbox" id="alon"><span></span></label></div><div class="srow" id="asrow" style="display:none"><div><b>Start with Windows</b><div class="m">Open the app automatically when you sign in to Windows, so the alert appears every morning</div></div><label class="tgl"><input type="checkbox" id="ason"><span></span></label></div></div>
 <div class="ssec mobonly"><div class="sst">Actions</div><div class="srow"><div><b>Copy weekly reminder</b></div><button class="ic" data-act="boss">Copy</button></div><div class="srow"><div><b>Print list</b></div><button class="ic" data-act="prt">Print</button></div><div class="srow"><div><b>Export to Excel</b></div><button class="ic" data-act="exp">Export</button></div></div>
 <div class="ssec"><div class="sst">Data &amp; backup</div><div class="srow"><div><b>Backup now</b><div class="m" id="lbtxt">Save a copy of all cheques to a file</div></div><button class="ic" id="bn">Download</button></div><div class="srow" id="rsrow"><div><b>Restore backup</b><div class="m">Load cheques from a backup file</div></div><button class="ic" id="rs">Choose file</button></div><input type="file" id="rf" accept=".json,application/json" hidden></div>
@@ -259,7 +344,7 @@ function snapshotJSON(){return JSON.stringify({app:"al-berakah-reminders",versio
 function put(x,keep,act){if(!canEdit()){toast("This is a view-only account");return}if(!keep){x.ch=iso(T);x.by=who()}const i=D.findIndex(z=>z.id===x.id);if(i<0)D.push(x);else D[i]=x;lsSave();addPend("up",x.id,act,x.t,x.a?mon(x.a,x.cur):"");flush()}
 function rm(id,act){if(!canEdit()){toast("This is a view-only account");return}const it=D.find(z=>z.id===id);D=D.filter(z=>z.id!==id);lsSave();addPend("del",id,act||"deleted",it?it.t:"",it&&it.a?mon(it.a,it.cur):"");flush()}
 const snap=()=>JSON.stringify(D),restore=s=>()=>{const o=JSON.parse(s);D.filter(z=>!o.some(y=>y.id===z.id)).forEach(z=>rm(z.id,"reverted"));o.forEach(y=>{const z={...y};delete z.ver;put(z,1,"reverted")});render()};
-let tab="tl",view="up",tfl="all",cur=null,sel=null,edit=null,tt,SEL=new Set(),msgFor=null;
+let tab="tl",view="up",tfl="all",cur=null,sel=null,edit=null,tt,SEL=new Set(),msgFor=null;document.body.dataset.pg="tl";
 const pend=()=>D.filter(x=>!x.done).sort((a,b)=>a.d.localeCompare(b.d));
 function toast(m,u){const t=$("toast");t.textContent=m;if(u){const b=document.createElement("button");b.textContent="Undo";b.onclick=()=>{u();t.classList.remove("show")};t.appendChild(b)}t.classList.add("show");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("show"),u?6000:2200)}
 let sub="all";
@@ -283,6 +368,40 @@ function drawBackupBanner(){const lb=lastBackup(),dys=lb?Math.floor((T-P(lb))/86
  let sn="";try{sn=localStorage.getItem("berakah.bksnooze")||""}catch(e){}
  const due=(lb===""||dys>=7)&&D.length>0&&ROLE==="admin"&&!(sn&&sn>=iso(T)),el=$("bkb");
  if(el)el.innerHTML=due?'<div class="bkb"><span>💾 <b>Backup reminder</b> · last backup: '+txt+'</span><span><button class="ic" id="bkbnow">Back up now</button> <button class="ic" id="bkblater">Later</button></span></div>':""}
+let VM="cards";try{VM=localStorage.getItem("berakah.vm")==="compact"?"compact":"cards"}catch(e){}
+let COLL={};try{COLL=JSON.parse(localStorage.getItem("berakah.coll")||"{}")||{}}catch(e){COLL={}}
+const saveColl=()=>{try{localStorage.setItem("berakah.coll",JSON.stringify(COLL))}catch(e){}};
+function crow(x){const d=P(x.d),n=dd(x.d),k=catGroup(x);
+ return '<div class="cr g-'+k+'" id="r'+x.id+'" style="--c:'+(x.done?"var(--ac)":col(n))+'">'+(x.done?'<span class="cbs"></span>':'<input type="checkbox" class="cb" data-sel="'+x.id+'" '+(SEL.has(x.id)?"checked":"")+' aria-label="Select">')
+ +'<div class="cdt"><b>'+d.getDate()+'</b> '+d.toLocaleString("en-GB",{month:"short"})+'<small>'+d.toLocaleString("en-GB",{weekday:"short"})+'</small></div>'
+ +'<div class="cnm"><b title="'+esc(x.t)+'">'+esc(x.t)+'</b><small>'+(x.c?'No. '+esc(x.c)+' · ':'')+'<span class="cat k-'+k+'">'+esc(cat(x))+'</span>'+(x.rep?' · monthly':'')+'</small></div>'
+ +'<div class="cam">'+(x.a?mon(x.a,x.cur):'')+'</div><span class="tg">'+(x.done?dnl(x):lab(n))+'</span>'
+ +'<div class="cac">'+(x.done?'':'<button class="ok" data-ok="'+x.id+'" title="Mark as '+dnl(x)+'">✓</button>')+'<button class="ic" data-ed="'+x.id+'" title="Edit">'+IC.ed+'</button><button class="ic" data-cp="'+x.id+'" title="Duplicate">'+IC.cp+'</button><button class="ic" data-ca="'+x.id+'" title="Add to calendar">'+IC.ca+'</button><button class="ic" data-dl="'+x.id+'" title="Delete">'+IC.dl+'</button></div></div>'}
+function fitStk(){const bar=document.querySelector(".bar"),jm=$("jmpm");let top=0;
+ if(bar&&getComputedStyle(bar).position==="sticky")top=bar.offsetHeight;
+ let h=top;if(jm&&getComputedStyle(jm).display!=="none"){jm.style.top=top+"px";h=top+jm.offsetHeight}
+ document.documentElement.style.setProperty("--stk",h+"px")}
+let JK=[];
+function drawJump(od,rest,M){const it=[];
+ if(od.length)it.push(["over","Overdue",od.length,"od"]);
+ const wk=rest.filter(x=>!x.done&&dd(x.d)>=0&&dd(x.d)<=6);if(wk.length)it.push(["wk","This week",wk.length,""]);
+ M.forEach(m=>it.push([m,mn(m,{month:"short",year:"numeric"}),rest.filter(x=>x.d.startsWith(m)).length,""]));
+ JK=it.map(r=>r[0]);
+ const h=it.map(([k,l,n,c])=>'<button class="jb '+c+'" data-j="'+k+'"><span>'+l+'</span><em>'+n+'</em></button>').join("");
+ $("jmp").innerHTML=h;$("jmpm").innerHTML=h;fitStk();spy()}
+function spy(){if(tab!=="tl")return;const ms=[...document.querySelectorAll("#list .ms")],lim=(parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--stk"))||0)+24;
+ let act="";ms.forEach(m=>{if(m.getBoundingClientRect().top<=lim)act=m.dataset.k});if(!act&&ms[0])act=ms[0].dataset.k;
+ document.querySelectorAll(".jb").forEach(b=>b.classList.toggle("on",b.dataset.j===act))}
+const stkv=()=>parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--stk"))||0;
+function scrollToItem(id){let r=$("r"+id);if(!r){toast("Not shown with the current filters");return}
+ const ms=r.closest(".ms");if(ms&&ms.classList.contains("cl")){COLL[ms.dataset.k]=false;saveColl();ms.classList.remove("cl");const b=ms.querySelector(".mh");if(b)b.setAttribute("aria-expanded","true")}
+ window.scrollTo({top:r.getBoundingClientRect().top+scrollY-stkv()-64,behavior:"smooth"});r.classList.add("flash");setTimeout(()=>r.classList.remove("flash"),1700)}
+function jumpTo(k){
+ if(k==="wk"){const x=pend().filter(z=>dd(z.d)>=0&&dd(z.d)<=6&&$("r"+z.id)).sort((a,b)=>a.d.localeCompare(b.d))[0];if(x)scrollToItem(x.id);return}
+ const m=$("ms-"+k);if(!m)return;if(m.classList.contains("cl")){COLL[k]=false;saveColl();m.classList.remove("cl");m.querySelector(".mh").setAttribute("aria-expanded","true")}
+ window.scrollTo({top:m.getBoundingClientRect().top+scrollY-stkv()+1,behavior:"smooth"})}
+window.addEventListener("scroll",()=>{if(!spy.q){spy.q=1;requestAnimationFrame(()=>{spy.q=0;spy()})}},{passive:true});
+window.addEventListener("resize",fitStk);
 function render(){drawBackupBanner();
  const p=pend();$("td").textContent=T.toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
  const n=p.find(x=>dd(x.d)>=0)||p[0];
@@ -297,8 +416,14 @@ function render(){drawBackupBanner();
  const sn=k=>base.filter(x=>catGroup(x)==="ch"&&(k==="all"||x.ty.indexOf(k==="pay"?"(to pay)":k==="rec"?"(to receive)":"(to deposit)")>-1)).length;
  $("sf").innerHTML=tfl==="ch"?[["all","All cheques"],["pay","To pay"],["rec","To receive"],["dep","To deposit"]].map(([k,l])=>'<button class="sc'+(sub===k?" on":"")+'" data-s="'+k+'">'+l+' <b>'+sn(k)+'</b></button>').join(""):"";
  const v=vis(),od=v.filter(x=>!x.done&&dd(x.d)<0),rest=v.filter(x=>x.done||dd(x.d)>=0),M=[...new Set(rest.map(x=>x.d.slice(0,7)))];
- const grp=(t,g,c)=>g.length?'<div class="mh"><b'+(c?' style="color:var(--rd)"':'')+'>'+t+' · '+g.length+'</b><span>'+sumBy(g)+'</span></div>'+g.map(x=>{const d=P(x.d),k=dd(x.d);return '<div class="row g-'+catGroup(x)+'" id="r'+x.id+'" style="--c:'+(x.done?"var(--ac)":col(k))+'"><div class="d"><b>'+d.getDate()+'</b><span>'+d.toLocaleString("en-GB",{weekday:"short"})+'</span></div><div class="ln"><i></i></div>'+card(x)+'</div>'}).join(""):"";
- $("list").innerHTML=grp("Overdue",od,1)+M.map(m=>grp(mn(m),rest.filter(x=>x.d.startsWith(m)))).join("")||(!ready?empty("⏳","Loading your reminders…",""):D.length?empty("🔎","No matches","Try a different search or filter."):empty("📭","No reminders yet",canEdit()?"Click <b style=\"display:inline\">+ New reminder</b> or press N to create your first one.":"Nothing has been added yet."));
+ const long=v.length>25,srch=!!$("q").value.trim()||!!$("cof").value;let si=0;
+ const cardRow=x=>{const d=P(x.d),k=dd(x.d);return '<div class="row g-'+catGroup(x)+'" id="r'+x.id+'" style="--c:'+(x.done?"var(--ac)":col(k))+'"><div class="d"><b>'+d.getDate()+'</b><span>'+d.toLocaleString("en-GB",{weekday:"short"})+'</span></div><div class="ln"><i></i></div>'+card(x)+'</div>'};
+ const rowH=VM==="compact"?crow:cardRow;
+ const grp=(k,t,g,c)=>{if(!g.length)return"";const i=k==="over"?-1:si++,cl=!srch&&(k in COLL?COLL[k]:(long&&i>=2));
+  return '<section class="ms'+(cl?" cl":"")+'" id="ms-'+k+'" data-k="'+k+'"><button class="mh" data-mh="'+k+'" aria-expanded="'+!cl+'"><svg class="ch" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg><b'+(c?' style="color:var(--rd)"':'')+'>'+t+'<small>'+g.length+(g.length===1?" item":" items")+'</small></b><span>'+sumBy(g)+'</span></button><div class="mb">'+g.map(rowH).join("")+'</div></section>'};
+ $("list").innerHTML=grp("over","Overdue",od,1)+M.map(m=>grp(m,mn(m),rest.filter(x=>x.d.startsWith(m)))).join("")||(!ready?empty("⏳","Loading your reminders…",""):D.length?empty("🔎","No matches","Try a different search or filter."):empty("📭","No reminders yet",canEdit()?"Click <b style=\"display:inline\">+ New reminder</b> or press N to create your first one.":"Nothing has been added yet."));
+ $("dv").innerHTML=[["cards","Cards"],["compact","Compact"]].map(([k,l])=>'<button class="vs'+(VM===k?" on":"")+'" data-dv="'+k+'">'+l+'</button>').join("");
+ drawJump(od,rest,M);
  const sl=[...SEL].filter(id=>D.some(z=>z.id===id&&!z.done));SEL=new Set(sl);
  $("selbar").className="selbar"+(SEL.size?" on":"");$("selbar").innerHTML=SEL.size?'<b>'+SEL.size+' selected</b><button id="bulk">✓ Mark all as cleared / done</button><button class="s2" id="selall">Select all shown</button><button class="s2" id="selx">Clear selection</button>':"";
  bars($("bars"),p);const C={};p.forEach(x=>C[x.t]=(C[x.t]||0)+(+x.a||0));hbars($("tc"),Object.fromEntries(Object.entries(C).sort((a,b)=>b[1]-a[1]).slice(0,5)));
@@ -311,7 +436,7 @@ function drawCal(){const y=cur.getFullYear(),m=cur.getMonth(),fi=(new Date(y,m,1
  let h=["M","T","W","T","F","S","S"].map(x=>'<div class="h">'+x+'</div>').join("")+'<div class="c x"></div>'.repeat(fi);
  for(let i=1;i<=days;i++){const s=iso(new Date(y,m,i)),g=p.filter(x=>x.d===s),c=["c"];if(g.length)c.push("h2");if(s===iso(T))c.push("t");if(s===sel)c.push("s");h+='<button class="'+c.join(" ")+'" data-d="'+s+'">'+i+(g.length&&amt(g)?'<i>'+(amt(g)/1000).toFixed(1)+'k</i>':'')+'</button>'}
  $("g").innerHTML=h;$("sh").textContent=P(sel).toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
- const g=p.filter(x=>x.d===sel);$("sl").innerHTML=g.length?g.map(x=>'<div style="margin-bottom:10px">'+card(x)+'</div>').join(""):'<div class="em">No reminders on this day</div>'}
+ const g=p.filter(x=>x.d===sel);$("sl").innerHTML=g.length?'<div class="calj"><button class="ic" data-tj="'+sel+'">Show in Timeline ›</button></div>'+g.map(x=>'<div style="margin-bottom:10px">'+card(x)+'</div>').join(""):'<div class="em">No reminders on this day</div>'}
 function setDl(){const v=$("ty").value;$("dlb").textContent=v.indexOf("deposit")>-1?"Deposit date":v.startsWith("Cheque")?"Cheque date":"Due date";$("cw").style.display=v.startsWith("Other")?"block":"none"}
 function openF(x,dup){if(!canEdit()){toast("This is a view-only account");return}edit=x&&!dup?x.id:null;$("ft").textContent=edit?"Edit reminder":"New reminder";$("sv").textContent=edit?"Save changes":"Save";
  const kn=x&&TYPES.includes(x.ty);$("mc").value=x?catGroup(x):"ch";fillSub();$("ty").value=x?(kn?x.ty:"Other (type your own)"):"Cheque (to pay)";$("cty").value=x&&!kn?x.ty:"";
@@ -323,20 +448,33 @@ function fillPrint(){$("pco").value=PR.co;$("pco2").value=PR.co2;$("pby0").value
 const savePR=()=>{try{localStorage.setItem("berakah.print",JSON.stringify(PR))}catch(e){toast("Could not save - the logo may be too large")}};
 const logoOK=s=>typeof s==="string"&&/^data:image\/(png|jpeg|webp|gif);base64,[A-Za-z0-9+\/=]+$/.test(s);
 const PCOLS=[["n","#"],["d","Date"],["t","Company"],["c","Cheque no / reference"],["ty","Category"],["a","Amount"],["rep","Repeat"],["st","Status"],["note","Notes"],["by","Updated by"]];
-const PODEF={st:"pending",so:"date",gr:"none",or:"portrait",fs:"normal",col:"maroon",cols:["n","d","t","c","ty","a"],hco:true,hco2:true,hlogo:true,sig:false,note:"",foot:"",from:"",to:""};
+const PODEF={st:"pending",so:"date",gr:"none",or:"portrait",fs:"normal",col:"maroon",cols:["n","d","t","c","ty","a"],hco:true,hco2:true,hlogo:true,sig:false,note:"",foot:"",from:"",to:"",cos:null};
 let PO=Object.assign({},PODEF,{cols:PODEF.cols.slice()});
-try{const s=JSON.parse(localStorage.getItem("berakah.printopts")||"null");if(s&&typeof s==="object")PO=Object.assign(PO,s)}catch(e){}
+try{const s=JSON.parse(localStorage.getItem("berakah.printopts")||"null");if(s&&typeof s==="object"){delete s.cos;delete s.from;delete s.to;PO=Object.assign(PO,s)}}catch(e){}
 if(!Array.isArray(PO.cols)||!PO.cols.some(k=>PCOLS.some(c=>c[0]===k)))PO.cols=PODEF.cols.slice();
-$("pcols").innerHTML=PCOLS.map(c=>'<label class="pck"><input type="checkbox" class="po" id="pcc-'+c[0]+'"> '+c[1]+'</label>').join("");
+PO.cols=PCOLS.map(c=>c[0]).filter(k=>PO.cols.indexOf(k)>-1);
+$("pcols").innerHTML=PCOLS.map(c=>'<button type="button" class="cc" data-col="'+c[0]+'">'+c[1]+'</button>').join("");
 const setSel=(id,v,d)=>{const s=$(id);s.value=v;if(s.value!==v)s.value=d};
-function fillOpts(){setSel("pst",PO.st,PODEF.st);setSel("pso",PO.so,PODEF.so);setSel("pgr",PO.gr,PODEF.gr);setSel("por",PO.or,PODEF.or);setSel("pfs",PO.fs,PODEF.fs);setSel("pcol",PO.col,PODEF.col);
- $("phco").checked=!!PO.hco;$("phco2").checked=!!PO.hco2;$("phlogo").checked=!!PO.hlogo;$("psig").checked=!!PO.sig;$("pnote").value=PO.note||"";$("pfoot").value=PO.foot||"";$("pfrom").value=PO.from||"";$("pto").value=PO.to||"";
- PCOLS.forEach(c=>{$("pcc-"+c[0]).checked=PO.cols.indexOf(c[0])>-1})}
-function readOpts(){PO.st=$("pst").value;PO.so=$("pso").value;PO.gr=$("pgr").value;PO.or=$("por").value;PO.fs=$("pfs").value;PO.col=$("pcol").value;
- PO.hco=$("phco").checked;PO.hco2=$("phco2").checked;PO.hlogo=$("phlogo").checked;PO.sig=$("psig").checked;PO.note=$("pnote").value;PO.foot=$("pfoot").value;PO.from=$("pfrom").value;PO.to=$("pto").value;
- PO.cols=PCOLS.map(c=>c[0]).filter(k=>$("pcc-"+k).checked);if(!PO.cols.length){PO.cols=["t"];$("pcc-t").checked=true}
- try{localStorage.setItem("berakah.printopts",JSON.stringify(PO))}catch(e){}}
+function saveOpts(){try{const o=Object.assign({},PO);delete o.cos;delete o.from;delete o.to;localStorage.setItem("berakah.printopts",JSON.stringify(o))}catch(e){}}
+function fillOpts(){setSel("pso",PO.so,PODEF.so);setSel("pgr",PO.gr,PODEF.gr);
+ document.querySelectorAll("#ps .seg,#ps .swc").forEach(g=>g.querySelectorAll("button").forEach(b=>b.classList.toggle("on",b.dataset.v===PO[g.dataset.k])));
+ document.querySelectorAll("#pcols .cc").forEach(b=>b.classList.toggle("on",PO.cols.indexOf(b.dataset.col)>-1));
+ $("phco").checked=!!PO.hco;$("phco2").checked=!!PO.hco2;$("phlogo").checked=!!PO.hlogo;$("psig").checked=!!PO.sig;$("pnote").value=PO.note||"";$("pfoot").value=PO.foot||"";$("pfrom").value=PO.from||"";$("pto").value=PO.to||""}
+function readOpts(){PO.so=$("pso").value;PO.gr=$("pgr").value;PO.hco=$("phco").checked;PO.hco2=$("phco2").checked;PO.hlogo=$("phlogo").checked;PO.sig=$("psig").checked;PO.note=$("pnote").value;PO.foot=$("pfoot").value;PO.from=$("pfrom").value;PO.to=$("pto").value;saveOpts()}
 const togCustom=()=>$("pcust").classList.toggle("show",$("pr").value==="custom");
+let COSN=[];
+const cosOn=n=>PO.cos===null||PO.cos.indexOf(n)>-1;
+function buildCos(counts){const q=$("pcosq").value.trim().toLowerCase(),box=$("pcos"),st=box.scrollTop;
+ COSN=[...new Set(D.map(x=>x.t))].sort((a,b)=>a.localeCompare(b));
+ const vis=COSN.map((n,i)=>[n,i]).filter(r=>!q||r[0].toLowerCase().indexOf(q)>-1);
+ box.innerHTML=vis.length?vis.map(r=>'<label'+(counts[r[0]]?'':' class="z"')+'><input type="checkbox" data-i="'+r[1]+'"'+(cosOn(r[0])?' checked':'')+'><span>'+esc(r[0])+'</span><em>'+(counts[r[0]]||0)+'</em></label>').join(""):'<div class="cn">No company found</div>';
+ box.scrollTop=st;
+ const k=PO.cos===null?COSN.length:PO.cos.filter(n=>COSN.indexOf(n)>-1).length;
+ $("pcosn").textContent=!COSN.length?"No companies yet":PO.cos===null?"All "+COSN.length+" companies":k===0?"None selected":k+" of "+COSN.length+" selected"}
+$("pcos").addEventListener("change",e=>{const c=e.target;if(!c.dataset||c.dataset.i===undefined)return;const n=COSN[+c.dataset.i];
+ const cur=PO.cos===null?COSN.slice():PO.cos.slice(),at=cur.indexOf(n);if(c.checked){if(at<0)cur.push(n)}else if(at>-1)cur.splice(at,1);
+ PO.cos=COSN.every(x=>cur.indexOf(x)>-1)?null:cur;drawSheet()});
+$("pcosq").addEventListener("input",()=>drawSheet());
 function showLogo(){$("plogov").innerHTML=logoOK(PR.logo)?'<img src="'+PR.logo+'" alt="" style="max-height:44px;max-width:140px;vertical-align:middle;background:#fff;border-radius:6px;padding:2px">':'<span class="m">No logo yet</span>'}
 $("plogo").addEventListener("change",e=>{const f=e.target.files&&e.target.files[0];e.target.value="";if(!f)return;
  if(!/^image\/(png|jpeg|webp|gif)$/.test(f.type)){toast("Choose a PNG or JPG picture");return}
@@ -345,29 +483,41 @@ $("plogo").addEventListener("change",e=>{const f=e.target.files&&e.target.files[
   im.onload=()=>{let url=src;try{const k=Math.min(1,400/Math.max(im.width,im.height,1)),c=document.createElement("canvas");c.width=Math.max(1,Math.round(im.width*k));c.height=Math.max(1,Math.round(im.height*k));const g=c.getContext&&c.getContext("2d");if(g){g.drawImage(im,0,0,c.width,c.height);url=c.toDataURL(f.type==="image/jpeg"?"image/jpeg":"image/png",.9)}}catch(er){}
    if(!logoOK(url)||url.length>400000){toast("This picture is too large or not supported - try a smaller PNG or JPG");return}
    PR.logo=url;savePR();showLogo();toast("Logo saved ✓")};im.src=src};rd.readAsDataURL(f)});
-document.addEventListener("click",e=>{const t=e.target.closest("button");if(!t)return;
- if(t.id==="pcx0"){const x=$("pcx");x.classList.toggle("show");t.textContent=x.classList.contains("show")?"Customise ▴":"Customise ▾"}
- if(t.id==="prst"){PO=Object.assign({},PODEF,{cols:PODEF.cols.slice()});fillOpts();readOpts();togCustom();drawSheet()}
- if(t.id==="plogox"){delete PR.logo;savePR();showLogo()}});
+document.addEventListener("click",e=>{const t=e.target.closest("button");if(t&&t.id==="plogox"){delete PR.logo;savePR();showLogo()}});
+$("ps").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;
+ const g=b.closest(".seg,.swc");
+ if(g&&b.dataset.v){PO[g.dataset.k]=b.dataset.v;fillOpts();saveOpts();drawSheet();return}
+ if(b.classList.contains("cc")){const k=b.dataset.col,i=PO.cols.indexOf(k);if(i>-1){if(PO.cols.length>1)PO.cols.splice(i,1)}else PO.cols.push(k);PO.cols=PCOLS.map(c=>c[0]).filter(x=>PO.cols.indexOf(x)>-1);fillOpts();saveOpts();drawSheet();return}
+ if(b.id==="pcosall"){PO.cos=null;drawSheet()}
+ if(b.id==="pcosclr"){PO.cos=[];drawSheet()}
+ if(b.id==="prst"){PO=Object.assign({},PODEF,{cols:PODEF.cols.slice()});$("pr").value="30";$("pcosq").value="";fillOpts();saveOpts();togCustom();drawSheet()}});
 $("ps").addEventListener("input",e=>{if(e.target.classList.contains("po")){readOpts();drawSheet()}});
 $("ps").addEventListener("change",e=>{if(e.target.classList.contains("po")){readOpts();drawSheet()}});
 ["pco","pco2","pby0","ptt0"].forEach(id=>$(id).addEventListener("input",()=>{Object.assign(PR,{co:$("pco").value,co2:$("pco2").value,by:$("pby0").value,title:$("ptt0").value});savePR()}));
 const catFilter=()=>{const v=$("pct").value;return x=>v==="all"||(v==="cheques"&&isCh(x))||(v.indexOf("t:")===0&&x.ty===v.slice(2))};
 function suggestTitle(){const v=$("pct").value;if(v==="all")return PR.title;if(v==="cheques")return "Cheque list";const t=v.slice(2);
  if(t.indexOf("Cheque")===0)return "Cheques "+((t.match(/\((.*)\)/)||[0,""])[1])+" list";return t.replace(/ \(.*\)$/,"")+" list"}
-function openPrint(){const ts=[...new Set(pend().map(x=>x.ty))].sort();
+function openPrint(){const ts=[...new Set(D.map(x=>x.ty))].sort();
  $("pct").innerHTML='<option value="all">All categories</option><option value="cheques">All cheques</option>'+ts.map(t=>'<option value="t:'+esc(t)+'">'+esc(t)+'</option>').join("");
- titleEdited=false;$("ptt").value=PR.title;$("pby").value=PR.by;$("ps").classList.add("show");fillOpts();togCustom();drawSheet()}
+ titleEdited=false;PO.cos=null;PO.from="";PO.to="";$("pcosq").value="";$("pr").value="30";
+ $("ptt").value=PR.title;$("pby").value=PR.by;fillOpts();togCustom();
+ document.querySelectorAll("#ps details.st").forEach((d,i)=>{d.open=innerWidth>=900||i===0});
+ $("ps").classList.add("show");drawSheet();$("pstp").scrollTop=0;document.querySelector(".pst-s").scrollTop=0}
 const PCOL={maroon:["#7a1230","#f3e8eb"],navy:["#1f3a6b","#e8edf6"],black:["#111111","#eeeeee"]},PFS={small:11,normal:13,large:15};
 const mlab=k=>new Date(k+"-01T00:00:00").toLocaleDateString("en-GB",{month:"long",year:"numeric"});
 function setPage(){let st=document.getElementById("pgst");if(!st){st=document.createElement("style");st.id="pgst";document.head.appendChild(st)}st.textContent="@page{size:A4 "+(PO.or==="landscape"?"landscape":"portrait")+";margin:12mm}"}
-function printRows(){const pf=catFilter(),r=$("pr").value,mo=iso(T).slice(0,7);
+function fitSheet(){const sh=$("sheet"),L=PO.or==="landscape",w=L?1123:794,av=$("pstp").clientWidth-(innerWidth<900?20:56);sh.style.width=w+"px";sh.style.minHeight=(L?794:1123)+"px";sh.style.zoom=Math.max(.3,Math.min(1,av/w))}
+window.addEventListener("resize",()=>{if($("ps").classList.contains("show"))fitSheet()});
+function printRows(skipCo){const pf=catFilter(),r=$("pr").value,mo=iso(T).slice(0,7),nm=iso(new Date(T.getFullYear(),T.getMonth()+1,1)).slice(0,7);
  let a=PO.st==="done"?D.filter(x=>x.done):PO.st==="all"?D.slice():D.filter(x=>!x.done);
- a=a.filter(pf).filter(x=>r==="month"?x.d.slice(0,7)===mo:r==="custom"?(!PO.from||x.d>=PO.from)&&(!PO.to||x.d<=PO.to):dd(x.d)<=+r);
+ a=a.filter(pf).filter(x=>r==="month"?x.d.slice(0,7)===mo:r==="nmonth"?x.d.slice(0,7)===nm:r==="custom"?(!PO.from||x.d>=PO.from)&&(!PO.to||x.d<=PO.to):dd(x.d)<=+r);
+ if(!skipCo&&PO.cos!==null)a=a.filter(x=>PO.cos.indexOf(x.t)>-1);
  const so=PO.so,byD=(x,y)=>x.d.localeCompare(y.d);
- return a.sort((x,y)=>so==="company"?x.t.localeCompare(y.t)||byD(x,y):so==="amount"?(+y.a||0)-(+x.a||0)||byD(x,y):so==="cat"?cat(x).localeCompare(cat(y))||byD(x,y):byD(x,y))}
-function drawSheet(){const p=printRows(),r=$("pr").value,td=iso(T),sh=$("sheet"),cs=PO.cols,fs=PFS[PO.fs]||13,cc=PCOL[PO.col]||PCOL.maroon,ref=p.length&&p.every(isCh)?"Cheque no.":"Reference";
- const per=r==="custom"?(PO.from&&PO.to?"From "+fmtD(PO.from)+" to "+fmtD(PO.to):PO.from?"From "+fmtD(PO.from):PO.to?"Up to "+fmtD(PO.to):"All dates"):r==="month"?"This month ("+mlab(td.slice(0,7))+")":r==="9999"?"All dates":$("pr").selectedOptions[0].text+" (including overdue)";
+ return a.sort((x,y)=>so==="company"?x.t.localeCompare(y.t)||byD(x,y):so==="amount"?(+y.a||0)-(+x.a||0)||byD(x,y):so==="cat"?x.ty.localeCompare(y.ty)||byD(x,y):byD(x,y))}
+function drawSheet(){const counts={};printRows(true).forEach(x=>{counts[x.t]=(counts[x.t]||0)+1});buildCos(counts);
+ const p=printRows(),r=$("pr").value,td=iso(T),sh=$("sheet"),cs=PO.cols,fs=PFS[PO.fs]||13,cc=PCOL[PO.col]||PCOL.maroon,ref=p.length&&p.every(isCh)?"Cheque no.":"Reference";
+ const nmk=iso(new Date(T.getFullYear(),T.getMonth()+1,1)).slice(0,7);
+ const per=r==="custom"?(PO.from&&PO.to?"From "+fmtD(PO.from)+" to "+fmtD(PO.to):PO.from?"From "+fmtD(PO.from):PO.to?"Up to "+fmtD(PO.to):"All dates"):r==="month"?"This month ("+mlab(td.slice(0,7))+")":r==="nmonth"?"Next month ("+mlab(nmk)+")":r==="9999"?"All dates":$("pr").selectedOptions[0].text+" (including overdue)";
  const stl=PO.st==="done"?" · Completed items":PO.st==="all"?" · Pending and completed items":"";
  const ttl=$("ptt").value.trim()||PR.title,by=$("pby").value.trim();
  const ths=cs.map(k=>'<th'+(k==="a"?' class="r"':'')+'>'+(k==="c"?ref:PCOLS.find(c=>c[0]===k)[1])+'</th>').join("");
@@ -379,15 +529,16 @@ function drawSheet(){const p=printRows(),r=$("pr").value,td=iso(T),sh=$("sheet")
   if(ai===0)return '<tr class="'+cls+'"><td class="r">'+label+': '+s+'</td>'+(cs.length>1?'<td colspan="'+(cs.length-1)+'"></td>':'')+'</tr>';
   return '<tr class="'+cls+'"><td colspan="'+ai+'">'+label+'</td><td class="r">'+s+'</td>'+(rest>0?'<td colspan="'+rest+'"></td>':'')+'</tr>'};
  let body="";
- if(PO.gr==="cat"||PO.gr==="month"){const g={};p.forEach(x=>{const k=PO.gr==="cat"?cat(x):x.d.slice(0,7);(g[k]=g[k]||[]).push(x)});
+ if(PO.gr==="cat"||PO.gr==="month"){const g={};p.forEach(x=>{const k=PO.gr==="cat"?x.ty:x.d.slice(0,7);(g[k]=g[k]||[]).push(x)});
   Object.keys(g).sort((a,b)=>a.localeCompare(b)).forEach(k=>{const nm=esc(PO.gr==="cat"?k:mlab(k));body+='<tr class="gh"><td colspan="'+cs.length+'">'+nm+'</td></tr>'+g[k].map(rowH).join("")+totRow('Subtotal - '+nm+' ('+g[k].length+')',g[k],"sub")})}
  else body=p.map(rowH).join("");
  body+=totRow('Total ('+p.length+' item'+(p.length===1?'':'s')+')',p,"tot");
  const logo=PO.hlogo&&logoOK(PR.logo)?'<img src="'+PR.logo+'" alt="">':'';
  const names=PO.hco?'<h4>'+esc(PR.co)+'</h4>'+(PO.hco2&&PR.co2?'<div style="color:#444;direction:rtl;text-align:left">'+esc(PR.co2)+'</div>':''):'';
- sh.style.setProperty("--pa",cc[0]);sh.style.setProperty("--pb",cc[1]);sh.style.maxWidth=PO.or==="landscape"?"1100px":"820px";setPage();
+ sh.style.setProperty("--pa",cc[0]);sh.style.setProperty("--pb",cc[1]);fitSheet();setPage();
+ $("pstsum").innerHTML=p.length+" item"+(p.length===1?"":"s")+(p.length?" · "+sumBy(p):"")+" · "+(PO.or==="landscape"?"A4 landscape":"A4 portrait");
  sh.innerHTML=(logo||names?'<div class="hd">'+logo+'<div>'+names+'</div></div>':'')
-  +'<div style="display:flex;justify-content:space-between;gap:16px;margin-bottom:12px"><div><b style="font-size:16px">'+esc(ttl)+'</b>'+(PO.note?'<div style="margin-top:3px;color:#222">'+esc(PO.note)+'</div>':'')+'<div style="color:#555">'+esc(per+stl)+'</div></div><div style="text-align:right;color:#555">Date: '+fmtD(td)+(by?'<br>Prepared by '+esc(by):'')+'</div></div>'
+  +'<div style="display:flex;justify-content:space-between;gap:16px;margin-bottom:14px"><div><b style="font-size:17px">'+esc(ttl)+'</b>'+(PO.note?'<div style="margin-top:3px;color:#222">'+esc(PO.note)+'</div>':'')+'<div style="color:#555;margin-top:2px">'+esc(per+stl)+'</div></div><div style="text-align:right;color:#555;white-space:nowrap;flex:none">Date: '+fmtD(td)+(by?'<br>Prepared by '+esc(by):'')+'</div></div>'
   +'<table style="font-size:'+fs+'px"><thead><tr>'+ths+'</tr></thead><tbody>'+body+'</tbody></table>'
   +(p.length?'':'<div style="text-align:center;color:#777;padding:30px">Nothing to print for this selection.</div>')
   +(PO.sig?'<div class="sg"><div>Prepared by'+(by?': '+esc(by):'')+'</div><div>Checked by</div><div>Approved by</div></div>':'')
@@ -441,8 +592,13 @@ $("thmsel").onchange=()=>{TH.m=$("thmsel").value;saveTheme()};
 function saveTheme(){try{localStorage.setItem("berakah.theme2",JSON.stringify(TH))}catch(e){}applyTheme();drawTheme()}
 applyTheme();try{matchMedia("(prefers-color-scheme:dark)").addEventListener("change",applyTheme)}catch(e){}
 document.addEventListener("click",e=>{const t=e.target.closest("button");if(!t)return;const dt=t.dataset,X=id=>D.find(z=>z.id===id);
- if(dt.p){tab=dt.p;document.querySelectorAll(".pg").forEach(p=>p.classList.toggle("on",p.id===tab));document.querySelectorAll(".nvb").forEach(b=>b.classList.toggle("on",b===t));window.scrollTo(0,0);if(tab==="hs")loadHistory()}
- if(dt.v){view=dt.v;render()}if(dt.t){tfl=dt.t;sub="all";render()}if(dt.s){sub=dt.s;render()}if(dt.d){sel=dt.d;drawCal()}
+ if(dt.p){tab=dt.p;document.body.dataset.pg=tab;document.querySelectorAll(".pg").forEach(p=>p.classList.toggle("on",p.id===tab));document.querySelectorAll(".nvb").forEach(b=>b.classList.toggle("on",b===t));window.scrollTo(0,0);if(tab==="hs")loadHistory()}
+ if(dt.v){view=dt.v;render()}if(dt.t){tfl=dt.t;sub="all";render()}if(dt.s){sub=dt.s;render()}if(dt.d){sel=dt.d;drawCal();if(innerWidth<=900)$("sh").scrollIntoView({behavior:"smooth",block:"start"})}
+ if(dt.dv){VM=dt.dv;try{localStorage.setItem("berakah.vm",VM)}catch(e){}render()}
+ if(dt.mh){const m=$("ms-"+dt.mh);if(m){const cl=!m.classList.contains("cl");COLL[dt.mh]=cl;saveColl();m.classList.toggle("cl",cl);t.setAttribute("aria-expanded",String(!cl))}}
+ if(dt.j)jumpTo(dt.j);
+ if(t.id==="ctoday"){cur=new Date(T.getFullYear(),T.getMonth(),1);sel=iso(T);drawCal()}
+ if(dt.tj){document.querySelector('.nvb[data-p="tl"]').click();const x=D.filter(z=>z.d===dt.tj).sort((a,b)=>(a.done?1:0)-(b.done?1:0))[0];setTimeout(()=>{if(x)scrollToItem(x.id)},60)}
  if(dt.n){cur=new Date(cur.getFullYear(),cur.getMonth()+ +dt.n,1);drawCal()}
  if(dt.ok){const x=X(dt.ok),s=snap();if(x){const r=$("r"+x.id);if(r)r.classList.add("out");setTimeout(()=>{const rep=x.rep;clearItem(x);render();toast(rep?"Moved to next month":"Marked as "+dnl(x).toLowerCase()+" ✓",restore(s))},r?220:0)}}
  if(dt.un){const x=X(dt.un);if(x){x.done=false;put(x,0,"moved back to upcoming");render()}}
