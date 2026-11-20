@@ -285,10 +285,34 @@ body:not([data-pg="tl"]) .jmpm{display:none!important}body:not([data-pg="tl"]) #
 .cch em{font-style:normal;font-size:11px;opacity:.75;margin-right:4px}.cch button{border:0;background:transparent;color:inherit;font-size:16px;line-height:1;padding:0 6px;border-radius:50%}
 [data-eff="dark"] .cch{--kt:color-mix(in srgb,var(--k) 50%,#fff)}.cch:not(:has(button)){padding-right:10px}
 .catadd{display:flex;gap:8px}.catadd input{flex:1}
+body[data-pg="pd"] .hero,body[data-pg="pd"] .bar,body[data-pg="pd"] #rem,body[data-pg="pd"] #bkb,body[data-pg="pd"] .selbar{display:none}
+.pdh{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:14px}.pdh h2{margin:0 0 4px;font-size:24px}.pdh .m{max-width:560px}.pdt{display:flex;gap:8px;flex-wrap:wrap}
+.pdf{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}.pdf input{flex:2;min-width:220px}.pdf select{flex:1;min-width:140px}
+.pdg{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.pc{background:var(--card);border-radius:16px;overflow:hidden;box-shadow:0 1px 2px rgba(20,20,40,.06),0 8px 22px -14px rgba(20,20,40,.25);display:flex;flex-direction:column}
+.pci{position:relative;height:150px;background:linear-gradient(135deg,var(--h1,#4a0b1c),var(--h3,#9b1b34));display:flex;align-items:center;justify-content:center}
+.pci img{width:100%;height:100%;object-fit:cover}.pci svg{width:54px;height:54px;fill:none;stroke:rgba(255,255,255,.85);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.pcc{position:absolute;top:10px;right:10px;display:flex;align-items:center;gap:6px;background:rgba(0,0,0,.55);color:#fff;font-size:12px;font-weight:700;padding:4px 10px;border-radius:99px;margin:0;cursor:pointer}.pcc input{accent-color:var(--ac);margin:0}
+.pcb{padding:14px;display:flex;flex-direction:column;gap:8px;flex:1}.pck{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.pcbr{font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--ac)}.pcty{font-size:11px;font-weight:700;color:var(--mu);background:var(--bg);border:1px solid var(--bd);border-radius:99px;padding:1px 9px}
+.pcb h3{margin:0;font-size:17px;line-height:1.25}.pcs{display:flex;flex-wrap:wrap;gap:6px}
+.sp{font-size:12px;color:var(--mu);background:var(--bg);border-radius:8px;padding:3px 8px}.sp b{color:var(--tx);margin-right:3px}
+.pca{font-size:13px;color:var(--tx)}.pcn{font-size:12.5px;color:var(--mu);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.pcf{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:6px}.pcf b{flex:1;font-size:15px;color:var(--ac)}.pcl{font-size:13px;font-weight:700;color:var(--ac)}
+.pfmd{max-width:640px;max-height:92vh;overflow:auto}.pfph{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.plrm,.pcmm,.pfdm{max-width:680px;max-height:92vh;overflow:auto}
+#plb details{border-bottom:1px solid var(--bd)}#plb summary{cursor:pointer;font-weight:700;padding:12px 2px;list-style:none;display:flex;justify-content:space-between}#plb summary::-webkit-details-marker{display:none}#plb summary::after{content:"+";color:var(--ac);font-size:18px}#plb details[open] summary::after{content:"–"}
+#plb details>div{padding:0 2px 12px;font-size:14px;line-height:1.55}#plb p{margin:0 0 8px}#plb ul,#plb ol{margin:0 0 6px;padding-left:20px}#plb li{margin-bottom:5px}
+.plcv h4{margin:18px 0 8px}.cv{margin-bottom:10px}.cv>label{display:block;font-size:12px;font-weight:700;color:var(--mu);margin-bottom:5px}.cv>div{display:flex;gap:8px;flex-wrap:wrap}.cv span{display:flex;flex-direction:column;gap:3px;flex:1;min-width:90px}.cv em{font-style:normal;font-size:11px;color:var(--mu)}
+.fr{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--card);border-radius:12px;padding:10px 12px;margin-bottom:8px}.fr b{display:block}.fr small{color:var(--mu);font-size:12px}.tg.fit{background:rgba(47,158,110,.15);color:#2f9e6e}
+.cmpt{width:100%;border-collapse:collapse;font-size:13px}.cmpt th,.cmpt td{padding:9px 10px;border-bottom:1px solid var(--bd);text-align:left;vertical-align:top}.cmpt tbody th{color:var(--mu);font-weight:700;width:130px}
+.cmpt th.ch{text-align:center}.cmpt th.ch img{width:100%;max-height:90px;object-fit:cover;border-radius:10px;display:block;margin-bottom:6px}.cmpt th.ch b{display:block;color:var(--ac);font-size:11px;text-transform:uppercase;letter-spacing:.6px}.cmpt th.ch span{font-weight:700}
+.cmpt td.best{color:var(--ac);font-weight:800}
+@media (max-width:760px){.pdh h2{font-size:21px}.pdg{grid-template-columns:1fr}}
 </style></head><body><div class="app">
 <aside class="side"><div class="brand"><div class="mark">AB</div><div><div class="bn1">Al Berakah</div><div class="bn2">Due dates &amp; reminders</div></div></div>
 <nav class="menu"><div class="mt">Workspace</div>
-<button class="nvb on" data-p="tl"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg><span>Timeline</span></button><div class="jmp" id="jmp" aria-label="Jump to"></div><button class="nvb" data-p="dn"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>Done</span></button><button class="nvb" data-p="tt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg><span>Totals</span></button><button class="nvb" data-p="cl"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Calendar</span></button><button class="nvb" data-p="hs"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>History</span></button>
+<button class="nvb on" data-p="tl"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg><span>Timeline</span></button><div class="jmp" id="jmp" aria-label="Jump to"></div><button class="nvb" data-p="dn"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>Done</span></button><button class="nvb" data-p="tt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg><span>Totals</span></button><button class="nvb" data-p="cl"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Calendar</span></button><button class="nvb" data-p="hs"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>History</span></button><button class="nvb" data-p="pd"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg><span>Products</span></button>
 <div class="mt">Quick actions</div>
 <button class="qa" id="prt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg><span>Print list</span></button><button class="qa" id="exp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 21h16"/></svg><span>Export to Excel</span></button></nav>
 <div class="sp"></div><button class="qa" id="set"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg><span>Settings</span></button>
@@ -301,8 +325,25 @@ body:not([data-pg="tl"]) .jmpm{display:none!important}body:not([data-pg="tl"]) #
 <div class="pg" id="dn"><h2 id="dh"></h2><div class="cp" id="dl"></div></div>
 <div class="pg" id="tt"><div class="two"><div><div class="cp"><h2>By company</h2><div id="co"></div></div></div><div><div class="cp"><h2>By month</h2><div class="bars" id="bars2"></div></div><div class="cp"><h2>By category</h2><div id="cg"></div></div></div></div></div>
 <div class="pg" id="cl"><div style="height:14px"></div><div class="two"><div><div class="cal"><div class="nav"><button data-n="-1" aria-label="Previous month">‹</button><div class="ntt"><b id="mt"></b><button id="ctoday">Today</button></div><button data-n="1" aria-label="Next month">›</button></div><div class="g" id="g"></div><div class="cleg"><span><i style="background:var(--ts,rgba(161,26,56,.25));box-shadow:inset 0 0 0 1px var(--ac)"></i>Pending</span><span><i style="background:rgba(47,158,110,.35)"></i>Cleared / paid (past)</span></div></div><h2 id="sh"></h2><div id="sl" style="max-width:560px"></div></div><div class="pn"><div class="cp"><h2>Weekly reminder</h2><div class="m" style="margin-bottom:10px">Everything due in the next 7 days, ready to paste into WhatsApp or email.</div><pre class="wkm" id="wkm"></pre><button class="wkb" id="boss"><svg class="ii" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>Copy message</button></div></div></div></div>
+<div class="pg" id="pd"><div style="height:14px"></div><div class="pdh"><div><h2>Products</h2><div class="m">Your catalogue and learning corner. Add pumps with their key numbers, compare them and find a match for a customer.</div></div><div class="pdt"><button class="ic" id="pdlearn">Pump basics</button><button class="ic" id="pdfind">Find a pump</button><button class="add" id="pdadd">+ Add product</button></div></div><div class="pdf"><input id="pdq" placeholder="Search brand, model, type or use…" autocomplete="off"><select id="pdb"></select><select id="pdt"></select><button class="ic" id="pdcmp" style="display:none">Compare</button></div><div class="pdg" id="pdg"></div></div>
 <div class="pg" id="hs"><div class="cp"><h2 style="margin:0 0 6px">Change history</h2><div class="m" id="hsm" style="margin-bottom:8px"></div><div id="hsl"></div></div></div>
 <div class="note" id="stt">Loading…</div></div></div></div>
+<div class="ov" id="pfm"><div class="md pfmd"><div class="sth"><h3 id="pfh">Add product</h3><button class="ic" id="pfx" aria-label="Close">✕</button></div><div class="f">
+<div><label>Brand *</label><input id="pf-brand" maxlength="40"></div><div><label>Model / name *</label><input id="pf-name" maxlength="60"></div>
+<div class="full"><label>Type</label><input id="pf-type" list="pf-types" maxlength="40" placeholder="Choose, or type your own"><datalist id="pf-types"></datalist></div>
+<div><label>Max flow (m³/h)</label><input id="pf-flow" type="number" step="any" min="0"></div><div><label>Max head (m)</label><input id="pf-head" type="number" step="any" min="0"></div>
+<div><label>Power (kW)</label><input id="pf-kw" type="number" step="any" min="0"></div><div><label>Supply</label><select id="pf-volt"><option value="">-</option><option>230 V single-phase</option><option>400 V three-phase</option><option>12/24 V DC</option><option>Other</option></select></div>
+<div><label>Material</label><input id="pf-mat" maxlength="40" placeholder="e.g. Cast iron, SS304"></div><div><label>Port size</label><input id="pf-port" maxlength="20" placeholder="e.g. 1 inch or DN50"></div>
+<div><label>Price (AED, optional)</label><input id="pf-price" type="number" step="any" min="0"></div><div><label>Warranty</label><input id="pf-war" maxlength="30" placeholder="e.g. 2 years"></div>
+<div class="full"><label>Where it is used</label><input id="pf-apps" maxlength="120" placeholder="e.g. Villa water supply, pressure boosting, irrigation"></div>
+<div class="full"><label>Selling points</label><textarea class="ta" id="pf-notes" rows="3" maxlength="600"></textarea></div>
+<div class="full"><label>What I learned about it (my own notes)</label><textarea class="ta" id="pf-learn" rows="3" maxlength="600"></textarea></div>
+<div class="full"><label>Datasheet link (optional)</label><input id="pf-link" maxlength="200" placeholder="https://"></div>
+<div class="full"><label>Photo</label><div class="pfph"><span id="pf-img"></span><label class="ic lblbtn" for="pf-file">Choose photo</label><input type="file" id="pf-file" hidden accept="image/*"><button class="ic" id="pf-imx">Remove</button></div></div>
+</div><div class="sbt"><button class="g2" id="pf-cancel">Cancel</button><button id="pf-save">Save</button></div></div></div>
+<div class="ov" id="plr"><div class="md plrm"><div class="sth"><h3>Pump basics</h3><button class="ic" id="plx" aria-label="Close">✕</button></div><div id="plb"></div><div class="plcv" id="plcv"></div></div></div>
+<div class="ov" id="pfd"><div class="md pfdm"><div class="sth"><h3>Find a pump</h3><button class="ic" id="pfdx" aria-label="Close">✕</button></div><div class="m" style="margin-bottom:12px">Type what the customer needs. This is a quick check against the maximum values you saved. A pump cannot give its maximum flow and maximum head at the same time, so always check the pump curve before quoting.</div><div class="f"><div><label>Flow needed (m³/h)</label><input id="pfd-flow" type="number" step="any" min="0"></div><div><label>Head needed (m)</label><input id="pfd-head" type="number" step="any" min="0"></div></div><div id="pfd-res" style="margin-top:14px"></div></div></div>
+<div class="ov" id="pcm"><div class="md pcmm"><div class="sth"><h3>Compare products</h3><button class="ic" id="pcx" aria-label="Close">✕</button></div><div id="pcmb"></div></div></div>
 <div class="ov" id="dtov"><div class="md dtm"><div class="sth"><div><h3 id="dtt"></h3><div class="m" id="dts"></div></div><button class="ic" id="dtx" aria-label="Close">✕</button></div><div class="vseg" id="dtf" style="margin:4px 0 12px;align-self:flex-start"></div><div class="dtl" id="dtl"></div><div class="sbt"><button class="g2" id="dtp">Print this list</button><button id="dtc">Close</button></div></div></div>
 <div class="ov" id="ov"><div class="md"><h3 id="ft">New reminder</h3><div class="f">
 <div class="full"><label>Category</label><select id="ty"></select></div><div class="full" id="cw" style="display:none"><label>New category name</label><input id="cty" placeholder="e.g. Warranty, Tender, Salary, Visa" maxlength="40"></div>
@@ -390,7 +431,7 @@ const toDoc=x=>({id:x.id,title:x.t,chq:x.c||"",amount:x.a||0,cur:x.cur||"AED",da
 const fromDoc=o=>({id:o.id,t:o.title||"",c:o.chq||"",a:o.amount||0,cur:o.cur||"AED",d:o.date,ty:o.type||"Other",note:o.note||"",rep:!!o.repeat,done:o.status==="done",ch:o.ch||"",by:o.by||""});
 let mt=null;
 function lsSave(){try{localStorage.setItem(LS,JSON.stringify(D))}catch(e){}if(window.berakah){clearTimeout(mt);mt=setTimeout(()=>{try{window.berakah.save(snapshotJSON()).catch(()=>{})}catch(e){}},600)}}
-function snapshotJSON(){return JSON.stringify({app:"al-berakah-reminders",version:3,saved:new Date().toISOString(),items:D},null,1)}
+function snapshotJSON(){return JSON.stringify({app:"al-berakah-reminders",version:3,saved:new Date().toISOString(),items:D,products:PROD},null,1)}
 function put(x,keep,act){if(!canEdit()){toast("This is a view-only account");return}if(!keep){x.ch=iso(T);x.by=who()}const i=D.findIndex(z=>z.id===x.id);if(i<0)D.push(x);else D[i]=x;lsSave();addPend("up",x.id,act,x.t,x.a?mon(x.a,x.cur):"");flush()}
 function rm(id,act){if(!canEdit()){toast("This is a view-only account");return}const it=D.find(z=>z.id===id);D=D.filter(z=>z.id!==id);lsSave();addPend("del",id,act||"deleted",it?it.t:"",it&&it.a?mon(it.a,it.cur):"");flush()}
 const snap=()=>JSON.stringify(D),restore=s=>()=>{const o=JSON.parse(s);D.filter(z=>!o.some(y=>y.id===z.id)).forEach(z=>rm(z.id,"reverted"));o.forEach(y=>{const z={...y};delete z.ver;put(z,1,"reverted")});render()};
@@ -483,6 +524,75 @@ function jumpTo(k){
  window.scrollTo({top:m.getBoundingClientRect().top+scrollY-stkv()+1,behavior:"smooth"})}
 window.addEventListener("scroll",()=>{if(!spy.q){spy.q=1;requestAnimationFrame(()=>{spy.q=0;spy()})}},{passive:true});
 window.addEventListener("resize",fitStk);
+let PROD=[],PCMP=new Set(),PFE=null,PFI="";
+const PTYPES=["Booster pump","Submersible pump","Centrifugal pump","Multistage pump","Jockey pump","Circulation pump","Sewage / drainage pump","Borehole pump","Fire pump set","Pressure tank / accessories","Other"];
+const prodSave=()=>{try{localStorage.setItem("berakah.prod",JSON.stringify(PROD))}catch(e){toast("Could not save on this device - the photos may be too big")}lsSave()};
+const pName=x=>((x.brand||"")+" "+(x.name||"")).trim();
+const imgOK=s=>typeof s==="string"&&/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+\/=]+$/.test(s);
+function putP(x,keep){if(!canEdit()){toast("This is a view-only account");return}if(!keep){x.ch=iso(T);x.by=who()}const i=PROD.findIndex(z=>z.id===x.id);const isNew=i<0;if(isNew)PROD.push(x);else PROD[i]=x;prodSave();addPend("up",x.id,isNew?"added":"edited",pName(x),"");flush();pdRender()}
+function rmP(id){if(!canEdit()){toast("This is a view-only account");return}const it=PROD.find(z=>z.id===id);PROD=PROD.filter(z=>z.id!==id);PCMP.delete(id);prodSave();addPend("del",id,"deleted",it?pName(it):"","");flush();pdRender()}
+const num=v=>{const n=parseFloat(v);return isNaN(n)?"":n};
+const kwHp=x=>x.kw===""||x.kw==null?"":x.kw+" kW / "+(Math.round(x.kw/0.7457*10)/10)+" HP";
+function pcard(x){const sp=(v,l)=>v!==""&&v!=null&&v!==undefined?'<span class="sp"><b>'+esc(String(v))+'</b>'+l+'</span>':"";
+ return '<div class="pc" id="pc-'+esc(x.id)+'"><div class="pci">'+(imgOK(x.img)?'<img src="'+x.img+'" alt="">':'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg>')+'<label class="pcc"><input type="checkbox" data-pcmp="'+esc(x.id)+'"'+(PCMP.has(x.id)?" checked":"")+'> Compare</label></div>'
+ +'<div class="pcb"><div class="pck"><span class="pcbr">'+esc(x.brand||"")+'</span>'+(x.type?'<span class="pcty">'+esc(x.type)+'</span>':'')+'</div><h3>'+esc(x.name||"")+'</h3>'
+ +'<div class="pcs">'+sp(x.flow," m³/h flow")+sp(x.head," m head")+sp(kwHp(x),"")+sp(x.volt,"")+sp(x.mat,"")+sp(x.port,"")+'</div>'
+ +(x.apps?'<div class="pca">'+esc(x.apps)+'</div>':'')+(x.notes?'<div class="pcn">'+esc(x.notes)+'</div>':'')
+ +'<div class="pcf"><b>'+(x.price?"AED "+Number(x.price).toLocaleString("en-US"):"")+'</b>'+(x.link&&/^https?:\/\//i.test(x.link)?'<a class="pcl" href="'+esc(x.link)+'" target="_blank" rel="noopener">Datasheet</a>':'')+'<button class="ic mo" data-pm="'+esc(x.id)+'" aria-haspopup="menu" aria-label="More actions" title="More">'+IC.mo+'</button></div></div></div>'}
+function pdRender(){if(typeof tab==="undefined"||tab!=="pd")return;
+ const q=$("pdq").value.trim().toLowerCase(),bv=$("pdb").value,tv=$("pdt").value,br=[...new Set(PROD.map(x=>x.brand).filter(Boolean))].sort(),ty=[...new Set(PROD.map(x=>x.type).filter(Boolean))].sort();
+ $("pdb").innerHTML='<option value="">All brands</option>'+br.map(b=>'<option>'+esc(b)+'</option>').join("");$("pdb").value=br.indexOf(bv)>-1?bv:"";
+ $("pdt").innerHTML='<option value="">All types</option>'+ty.map(b=>'<option>'+esc(b)+'</option>').join("");$("pdt").value=ty.indexOf(tv)>-1?tv:"";
+ const l=PROD.filter(x=>(!$("pdb").value||x.brand===$("pdb").value)&&(!$("pdt").value||x.type===$("pdt").value)&&(!q||[x.brand,x.name,x.type,x.apps,x.mat,x.notes,x.learn].join(" ").toLowerCase().indexOf(q)>-1)).sort((a,b)=>pName(a).localeCompare(pName(b)));
+ $("pdg").innerHTML=l.map(pcard).join("")||(PROD.length?empty(EI.search,"No products match","Try a different search or filter."):empty(EI.inbox,"No products yet",canEdit()?"Press + Add product to add your first pump, then compare and learn from your catalogue.":"No products have been added yet."));
+ const n=PCMP.size;$("pdcmp").style.display=n>=2?"":"none";$("pdcmp").textContent="Compare ("+n+")"}
+function openPF(id){PFE=id?PROD.find(z=>z.id===id):null;const x=PFE||{};PFI=x.img||"";
+ $("pfh").textContent=PFE?"Edit product":"Add product";
+ $("pf-types").innerHTML=[...new Set(PTYPES.concat(PROD.map(z=>z.type).filter(Boolean)))].map(t=>'<option value="'+esc(t)+'">').join("");
+ [["brand","brand"],["name","name"],["type","type"],["flow","flow"],["head","head"],["kw","kw"],["volt","volt"],["mat","mat"],["port","port"],["price","price"],["war","warranty"],["apps","apps"],["notes","notes"],["learn","learn"],["link","link"]].forEach(([i,k])=>{$("pf-"+i).value=x[k]===undefined||x[k]===null?"":x[k]});
+ pfImg();$("pfm").classList.add("show");setTimeout(()=>$("pf-brand").focus(),50)}
+const pfImg=()=>{$("pf-img").innerHTML=imgOK(PFI)?'<img src="'+PFI+'" alt="" style="height:48px;border-radius:8px;vertical-align:middle">':'<span class="m">No photo</span>'};
+function savePF(){const brand=$("pf-brand").value.trim(),name=$("pf-name").value.trim();if(!brand||!name){toast("Brand and model name are needed");return}
+ const link=$("pf-link").value.trim();
+ const o={id:PFE?PFE.id:"prd_"+Date.now().toString(36)+Math.random().toString(36).slice(2,6),brand,name,type:$("pf-type").value.trim(),flow:num($("pf-flow").value),head:num($("pf-head").value),kw:num($("pf-kw").value),volt:$("pf-volt").value,mat:$("pf-mat").value.trim(),port:$("pf-port").value.trim(),price:num($("pf-price").value),warranty:$("pf-war").value.trim(),apps:$("pf-apps").value.trim(),notes:$("pf-notes").value.trim(),learn:$("pf-learn").value.trim(),link:/^https?:\/\//i.test(link)?link:"",img:imgOK(PFI)?PFI:""};
+ if(PFE&&PFE.ver)o.ver=PFE.ver;putP(o);$("pfm").classList.remove("show");toast(PFE?"Product updated ✓":"Product added ✓")}
+$("pf-file").addEventListener("change",e=>{const f=e.target.files&&e.target.files[0];e.target.value="";if(!f)return;if(!/^image\//.test(f.type)){toast("Choose a picture");return}
+ const rd=new FileReader();rd.onerror=()=>toast("Could not read this picture");rd.onload=()=>{const im=new Image();im.onerror=()=>toast("Could not read this picture");im.onload=()=>{try{const k=Math.min(1,520/Math.max(im.width,im.height,1)),c=document.createElement("canvas");c.width=Math.max(1,Math.round(im.width*k));c.height=Math.max(1,Math.round(im.height*k));const g=c.getContext("2d");g.fillStyle="#fff";g.fillRect(0,0,c.width,c.height);g.drawImage(im,0,0,c.width,c.height);const u=c.toDataURL("image/jpeg",.72);if(!imgOK(u)||u.length>350000){toast("Picture too large - try a smaller one");return}PFI=u;pfImg()}catch(er){toast("Could not use this picture")}};im.src=String(rd.result)};rd.readAsDataURL(f)});
+$("pdg").addEventListener("change",e=>{const c=e.target;if(c.dataset&&c.dataset.pcmp){if(c.checked){if(PCMP.size>=3){c.checked=false;toast("Compare up to 3 products at a time");return}PCMP.add(c.dataset.pcmp)}else PCMP.delete(c.dataset.pcmp);pdRender()}});
+["pdq"].forEach(i=>$(i).addEventListener("input",pdRender));["pdb","pdt"].forEach(i=>$(i).addEventListener("change",pdRender));
+function openPMenu(b){const id=b.dataset.pm,m=$("mnu");if(MN===id&&m.classList.contains("show")){closeMenu();return}
+ MN=id;m.innerHTML='<button role="menuitem" data-pe="'+esc(id)+'">'+IC.ed+'Edit</button><button role="menuitem" data-pcp="'+esc(id)+'">'+IC.cp+'Duplicate</button><button role="menuitem" class="dg" data-pdl="'+esc(id)+'">'+IC.dl+'Delete</button>';
+ m.classList.add("show");const r=b.getBoundingClientRect(),w=m.offsetWidth,h=m.offsetHeight;m.style.left=Math.min(innerWidth-w-8,Math.max(8,r.right-w))+"px";let y=r.bottom+6;if(y+h>innerHeight-8)y=Math.max(8,r.top-h-6);m.style.top=y+"px"}
+function openCmp(){const l=[...PCMP].map(id=>PROD.find(z=>z.id===id)).filter(Boolean);if(l.length<2){toast("Tick at least 2 products to compare");return}
+ const row=(lab,f,best)=>{const v=l.map(f),nums=v.map(z=>typeof z==="number"?z:null),b=best==="max"?Math.max(...nums.filter(z=>z!==null)):best==="min"?Math.min(...nums.filter(z=>z!==null&&z>0)):null;
+  return '<tr><th>'+lab+'</th>'+v.map((z,i)=>'<td'+(b!==null&&nums[i]!==null&&nums[i]===b&&nums.filter(q=>q===b).length<nums.length?' class="best"':'')+'>'+(z===""||z===null||z===undefined?"-":esc(String(z)))+'</td>').join("")+'</tr>'};
+ $("pcmb").innerHTML='<table class="cmpt"><thead><tr><th></th>'+l.map(x=>'<th class="ch">'+(imgOK(x.img)?'<img src="'+x.img+'" alt="">':'')+'<b>'+esc(x.brand||"")+'</b><span>'+esc(x.name||"")+'</span></th>').join("")+'</tr></thead><tbody>'
+  +row("Type",x=>x.type||"")+row("Max flow (m³/h)",x=>x.flow===""?"":x.flow,"max")+row("Max head (m)",x=>x.head===""?"":x.head,"max")+row("Power",x=>kwHp(x))+row("Supply",x=>x.volt||"")+row("Material",x=>x.mat||"")+row("Port size",x=>x.port||"")+row("Warranty",x=>x.warranty||"")+row("Price (AED)",x=>x.price===""?"":x.price,"min")+row("Used for",x=>x.apps||"")+row("Selling points",x=>x.notes||"")+row("My notes",x=>x.learn||"")
+  +'</tbody></table><div class="m" style="margin-top:10px">Highlighted = best value in that row (highest flow or head, lowest price).</div>';$("pcm").classList.add("show")}
+const LEARN=[
+["What does a pump do?","<p>A pump adds energy to water so it can move: from a tank or well to the taps, up to the roof of a building, or around a closed loop. Two numbers describe most pumps: <b>flow</b> and <b>head</b>.</p>"],
+["Flow (Q)","<p>How much water the pump moves in a given time. Common units: m³/h, L/min, L/s and US GPM.</p><p>1 m³/h = 16.7 L/min = 0.28 L/s = 4.4 US GPM.</p>"],
+["Head (H) and pressure","<p>Head is how high the pump can push water, in metres. For water, <b>10 m of head is about 1 bar (14.5 psi)</b>.</p><p>The head a customer needs = height to lift + friction losses in the pipes + the pressure needed at the outlet.</p>"],
+["The pump curve","<p>Flow and head are linked: when flow goes up, head goes down. A pump <b>cannot give its maximum flow and maximum head at the same time</b>. To choose properly, read the point on the curve (or the datasheet table) for the flow and head the customer needs.</p>"],
+["Power: kW and HP","<p>1 HP is about 0.75 kW. The kW on the name-plate is usually the motor output; the power taken from the supply is higher.</p><p>Bigger is not better: an oversized pump wastes electricity, starts and stops more and wears out sooner.</p>"],
+["Voltage and phase","<p>The usual supply in the UAE is 230 V single-phase and 400 V three-phase, 50 Hz. Small domestic pumps are normally single-phase. Larger pumps are normally three-phase. Always check the supply before quoting.</p>"],
+["Main types of pump","<ul><li><b>Centrifugal (surface):</b> general water transfer and supply.</li><li><b>Multistage:</b> several impellers to give higher pressure.</li><li><b>Booster set:</b> one or more pumps with a tank and controller for steady pressure in buildings.</li><li><b>Submersible:</b> works under water, such as boreholes, sumps and drainage.</li><li><b>Sewage / drainage:</b> built to pass solids.</li><li><b>Jockey pump:</b> small pump that keeps a fire system pressurised.</li><li><b>Circulation pump:</b> moves water round closed loops such as chilled or hot water.</li></ul>"],
+["Materials","<ul><li><b>Cast iron:</b> common and good value for clean water.</li><li><b>Stainless steel 304:</b> better resistance to rust for clean water.</li><li><b>Stainless steel 316:</b> higher resistance for salty or mildly aggressive liquids.</li><li><b>Bronze:</b> often used where drinking-water or marine use is needed.</li></ul><p>For sea water, chemicals or hot liquids, always confirm the material with the manufacturer.</p>"],
+["Parts that go with a pump","<ul><li><b>Pressure tank:</b> stores water and reduces how often the pump starts.</li><li><b>Check valve:</b> stops water flowing backwards.</li><li><b>Foot valve:</b> keeps a suction pipe full so the pump stays primed.</li><li><b>Float switch / pressure switch:</b> start and stop the pump automatically.</li><li><b>VFD (variable-frequency drive):</b> changes the motor speed to match demand and saves energy.</li><li><b>Dry-run protection:</b> stops the pump if there is no water.</li></ul>"],
+["Reading a name-plate","<ul><li><b>Q / H:</b> the flow and head the pump was rated at.</li><li><b>kW / HP, V, Hz, A:</b> motor power, supply and current.</li><li><b>IP rating:</b> protection against dust and water. IP55 means protected against dust and water jets; the higher the numbers, the better the protection.</li><li><b>NPSH:</b> the suction conditions a pump needs to avoid cavitation (see below).</li></ul>"],
+["Common problems","<ul><li><b>Dry running:</b> pump runs with no water, overheats and damages the seal.</li><li><b>Cavitation:</b> bubbles form when suction pressure is too low. It sounds like gravel and damages the impeller.</li><li><b>Air lock or no priming:</b> the pump spins but does not pump.</li><li><b>Wrong rotation (3-phase):</b> two phases swapped, so low flow.</li><li><b>Blockage:</b> solids in the liquid.</li><li><b>Short cycling:</b> the pump starts and stops too often, usually a small or faulty pressure tank.</li></ul>"],
+["Questions to ask the customer","<ol><li>What liquid is it: clean water, sewage, sea water or hot water?</li><li>How much flow is needed, and when (peak demand)?</li><li>What height and pressure are needed? How long is the pipe?</li><li>Where does the water come from: tank, well, borehole or mains? How far below the pump is it?</li><li>Is the supply single-phase or three-phase?</li><li>Does it run all day or only sometimes? Is a standby pump needed?</li><li>Indoor or outdoor? Budget and brand preference?</li></ol>"],
+["Competing with installers","<ul><li>Talk about <b>total cost</b>: running cost, spare parts and downtime, not only the purchase price.</li><li>Offer <b>warranty and local after-sales support</b>.</li><li>Show a <b>correctly sized</b> pump using the curve. Installers often oversize.</li><li>Explain the benefit of the better material, certification and efficiency in the customer's own words.</li></ul>"]];
+const CONV={flow:[["L/min",1],["m³/h",1000/60],["L/s",60],["US GPM",3.78541]],pres:[["bar",1],["m head",0.0980665],["psi",0.0689476],["kPa",0.01]],pow:[["kW",1],["HP",0.7457]]};
+function openLearn(){$("plb").innerHTML=LEARN.map((s,i)=>'<details'+(i<2?" open":"")+'><summary>'+s[0]+'</summary><div>'+s[1]+'</div></details>').join("");
+ $("plcv").innerHTML='<h4>Quick converters</h4>'+[["flow","Flow"],["pres","Pressure / head"],["pow","Power"]].map(([k,l])=>'<div class="cv"><label>'+l+'</label><div>'+CONV[k].map((u,i)=>'<span><input type="number" step="any" data-cv="'+k+'" data-i="'+i+'" aria-label="'+u[0]+'"><em>'+u[0]+'</em></span>').join("")+'</div></div>').join("");$("plr").classList.add("show")}
+$("plcv").addEventListener("input",e=>{const c=e.target;if(!c.dataset||!c.dataset.cv)return;const g=CONV[c.dataset.cv],v=parseFloat(c.value),base=isNaN(v)?null:v*g[+c.dataset.i][1];c.parentElement.parentElement.querySelectorAll("input").forEach(o=>{if(o===c)return;o.value=base===null?"":+(base/g[+o.dataset.i][1]).toPrecision(4)})});
+function drawFind(){const f=parseFloat($("pfd-flow").value),h=parseFloat($("pfd-head").value),box=$("pfd-res");
+ if(isNaN(f)||isNaN(h)||f<=0||h<=0){box.innerHTML='<div class="m">Type the flow and head the customer needs to see matching products from your catalogue.</div>';return}
+ const ok=PROD.filter(x=>x.flow!==""&&x.head!==""&&x.flow>=f&&x.head>=h).map(x=>({x,r:x.flow/f,s:x.head/h})).sort((a,b)=>(a.r+a.s)-(b.r+b.s));
+ box.innerHTML=ok.length?ok.map(({x,r,s})=>{const good=r<=1.5&&s<=1.5;return '<div class="fr"><div><b>'+esc(pName(x))+'</b><small>'+esc(x.type||"")+' · max '+x.flow+' m³/h · max '+x.head+' m'+(x.kw!==""?' · '+x.kw+' kW':'')+(x.price?' · AED '+Number(x.price).toLocaleString("en-US"):'')+'</small></div><span class="tg '+(good?"fit":"")+'">'+(good?"Close fit":"Larger than needed")+'</span></div>'}).join(""):'<div class="m">No product in your catalogue reaches both numbers. Add more products, or check the units.</div>'}
+function openFind(){$("pfd-flow").value="";$("pfd-head").value="";drawFind();$("pfd").classList.add("show");setTimeout(()=>$("pfd-flow").focus(),50)}
+["pfd-flow","pfd-head"].forEach(i=>$(i).addEventListener("input",drawFind));
 let MN=null;
 function closeMenu(){const m=$("mnu");if(m){m.classList.remove("show");m.innerHTML=""}MN=null}
 function openMenu(b){const id=b.dataset.mo,m=$("mnu");if(MN===id&&m.classList.contains("show")){closeMenu();return}
@@ -686,9 +796,17 @@ function drawTheme(){const card=x=>'<button class="thc'+(TH.n===x[0]?" on":"")+'
 function saveTheme(){try{localStorage.setItem("berakah.theme2",JSON.stringify(TH))}catch(e){}applyTheme();drawTheme()}
 applyTheme();try{matchMedia("(prefers-color-scheme:dark)").addEventListener("change",applyTheme)}catch(e){}
 document.addEventListener("click",e=>{const t=e.target.closest("button");if(!t)return;const dt=t.dataset,X=id=>D.find(z=>z.id===id);
- if(dt.p){tab=dt.p;document.body.dataset.pg=tab;document.querySelectorAll(".pg").forEach(p=>p.classList.toggle("on",p.id===tab));document.querySelectorAll(".nvb").forEach(b=>b.classList.toggle("on",b===t));window.scrollTo(0,0);if(tab==="hs")loadHistory()}
+ if(dt.p){tab=dt.p;document.body.dataset.pg=tab;if(tab==="pd")setTimeout(pdRender,0);document.querySelectorAll(".pg").forEach(p=>p.classList.toggle("on",p.id===tab));document.querySelectorAll(".nvb").forEach(b=>b.classList.toggle("on",b===t));window.scrollTo(0,0);if(tab==="hs")loadHistory()}
  if(dt.v){view=dt.v;render()}if(dt.t){tfl=dt.t;sub="all";render()}if(dt.s){sub=dt.s;render()}if(dt.d){sel=dt.d;drawCal();if(innerWidth<=900)$("sh").scrollIntoView({behavior:"smooth",block:"start"})}
  if(dt.mo)openMenu(t);
+ if(dt.pm)openPMenu(t);
+ if(dt.pe)openPF(dt.pe);
+ if(dt.pcp){const x=PROD.find(z=>z.id===dt.pcp);if(x){const c={...x,id:"prd_"+Date.now().toString(36)+Math.random().toString(36).slice(2,6),name:(x.name||"")+" (copy)"};delete c.ver;putP(c)}}
+ if(dt.pdl){const x=PROD.find(z=>z.id===dt.pdl);if(x&&confirm("Delete "+pName(x)+"?"))rmP(dt.pdl)}
+ if(t.id==="pdadd")openPF();if(t.id==="pdlearn")openLearn();if(t.id==="pdfind")openFind();if(t.id==="pdcmp")openCmp();
+ if(t.id==="pf-save")savePF();if(t.id==="pf-cancel"||t.id==="pfx")$("pfm").classList.remove("show");
+ if(t.id==="pf-imx"){PFI="";pfImg()}
+ if(t.id==="plx")$("plr").classList.remove("show");if(t.id==="pfdx")$("pfd").classList.remove("show");if(t.id==="pcx")$("pcm").classList.remove("show");
  if(t.id==="cata"){const v=$("catn").value.trim();if(!v){toast("Type a category name");return}if(allCats().some(c=>c.toLowerCase()===v.toLowerCase())){toast("That category already exists");return}CATS.push(v);saveCats();$("catn").value="";drawCats();render();toast("Category added ✓")}
  if(dt.cx!==undefined){const i=CATS.indexOf(dt.cx);if(i>-1&&!D.some(x=>x.ty===dt.cx)){CATS.splice(i,1);saveCats();drawCats();render()}}
  if(dt.dv){VM=dt.dv;try{localStorage.setItem("berakah.vm",VM)}catch(e){}render()}
@@ -723,9 +841,9 @@ document.addEventListener("click",e=>{const t=e.target.closest("button");if(!t)r
   $("ov").classList.remove("show");cur=null;render()}});
 document.addEventListener("change",e=>{const id=e.target.dataset&&e.target.dataset.sel;if(id){e.target.checked?SEL.add(id):SEL.delete(id);render()}});
 document.addEventListener("keydown",e=>{const typing=/INPUT|TEXTAREA|SELECT/.test(e.target.tagName);
- if(e.key==="Escape"){closeMenu();["ov","stm","ps","dtov"].forEach(i=>$(i).classList.remove("show"));if(DT)DT=null;if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();return}
+ if(e.key==="Escape"){closeMenu();["ov","stm","ps","dtov","pfm","plr","pfd","pcm"].forEach(i=>$(i).classList.remove("show"));if(DT)DT=null;if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();return}
  if(typing||e.ctrlKey||e.metaKey||e.altKey)return;
- if(e.key==="n"||e.key==="N"){e.preventDefault();openF()}else if(e.key==="/"){e.preventDefault();$("q").focus()}else if(e.key.length===1&&"12345".includes(e.key))document.querySelectorAll(".nvb")[+e.key-1].click()});
+ if(e.key==="n"||e.key==="N"){e.preventDefault();openF()}else if(e.key==="/"){e.preventDefault();$("q").focus()}else if(e.key.length===1&&"123456".includes(e.key))document.querySelectorAll(".nvb")[+e.key-1].click()});
 $("ty").onchange=setDl;fillSub();$("pr").onchange=()=>{togCustom();drawSheet()};$("pby").oninput=drawSheet;$("ptt").oninput=()=>{titleEdited=true;drawSheet()};$("pct").onchange=()=>{if(!titleEdited)$("ptt").value=suggestTitle();drawSheet()};
 $("q").oninput=render;$("srt").onchange=render;$("cof").onchange=render;$("caf").onchange=render;
 [$("ov"),$("stm")].forEach(o=>o.onclick=e=>{if(e.target===o)o.classList.remove("show")});
@@ -760,18 +878,18 @@ const PERSON='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8"
 const RLAB={admin:"Administrator",editor:"Editor",viewer:"Viewer"};
 function pendSave(){try{localStorage.setItem(LS+".pend",JSON.stringify(PEND))}catch(e){}}
 function addPend(t,id,a,ti,am){PEND=PEND.filter(p=>p.id!==id);PEND.push({t,id,a,ti,am});pendSave();setStatus()}
-function logHist(p){if(!sb||!user||!p.a||p.a==="skip")return;try{Promise.resolve(sb.from("history").insert({action:p.a,item_id:p.id,title:p.ti||"",detail:p.am||""})).then(()=>{},()=>{})}catch(e){}}
+function logHist(p){if(!sb||!user||!p.a||p.a==="skip"||String(p.id).indexOf("prd_")===0)return;try{Promise.resolve(sb.from("history").insert({action:p.a,item_id:p.id,title:p.ti||"",detail:p.am||""})).then(()=>{},()=>{})}catch(e){}}
 function logRaw(a,d){if(!sb||!user)return;try{Promise.resolve(sb.from("history").insert({action:a,title:"",detail:d||""})).then(()=>{},()=>{})}catch(e){}}
 let flushing=false,again=false,lastErr="";
 const sameVer=(a,b)=>{const p=Date.parse(a),q=Date.parse(b);return isNaN(p)||isNaN(q)?a===b:p===q};
 async function flush(){if(!sb||!user||!canEdit())return;if(flushing){again=true;return}flushing=true;
  try{do{again=false;for(const p of PEND.slice()){let r;
   if(p.t==="del")r=await sb.from("reminders").delete().eq("id",p.id);
-  else{const x=D.find(z=>z.id===p.id);if(x){
+  else{const isP=p.id.indexOf("prd_")===0,x=isP?PROD.find(z=>z.id===p.id):D.find(z=>z.id===p.id);if(x){
    if(x.ver){const c=await sb.from("reminders").select("updated_at,data").eq("id",x.id).maybeSingle();if(c.error)throw c.error;
     if(c.data&&!sameVer(c.data.updated_at,x.ver)){const who=(c.data.data&&c.data.data.by)||"Someone";
-     if(!confirm(who+' changed "'+x.t+'" after you opened it.\n\nOK = replace their change with yours\nCancel = keep their version')){const nx=fromDoc({...c.data.data,id:x.id});nx.ver=c.data.updated_at;const i=D.findIndex(z=>z.id===x.id);if(i>-1)D[i]=nx;lsSave();PEND=PEND.filter(q=>!(q.id===p.id&&q.t===p.t));pendSave();render();continue}}}
-   const ts=new Date().toISOString();r=await sb.from("reminders").upsert({id:x.id,data:toDoc(x),updated_at:ts});if(r&&!r.error)x.ver=ts}}
+     if(!confirm(who+' changed "'+(isP?pName(x):x.t)+'" after you opened it.\n\nOK = replace their change with yours\nCancel = keep their version')){const nx=isP?{...c.data.data,id:x.id}:fromDoc({...c.data.data,id:x.id});nx.ver=c.data.updated_at;const arr=isP?PROD:D,i=arr.findIndex(z=>z.id===x.id);if(i>-1)arr[i]=nx;if(isP)prodSave();else lsSave();PEND=PEND.filter(q=>!(q.id===p.id&&q.t===p.t));pendSave();render();pdRender();continue}}}
+   const ts=new Date().toISOString();r=await sb.from("reminders").upsert({id:x.id,data:isP?{...x,ver:undefined,kind:"product"}:toDoc(x),updated_at:ts});if(r&&!r.error)x.ver=ts}}
   if(r&&r.error)throw r.error;PEND=PEND.filter(q=>!(q.id===p.id&&q.t===p.t));pendSave();logHist(p)}}while(again);lastErr=""}
  catch(e){lastErr=(e&&e.message)||"connection problem";again=false}
  flushing=false;setStatus()}
@@ -794,10 +912,14 @@ async function getRole(){
   if(c)return{role:c};return{error:(e&&e.message)||"could not reach the database"}}}
 const sameList=(a,b)=>{const k=l=>JSON.stringify(l.slice().sort((x,y)=>x.id<y.id?-1:1));return k(a)===k(b)};
 async function pull(quiet){const r=await sb.from("reminders").select("id,data,updated_at");if(r.error){if(!quiet)toast("Could not load from the cloud – showing the saved copy");return}
- if(r.data.length===0&&D.length>0&&canEdit()&&!quiet){D.forEach(x=>addPend("up",x.id));await flush();toast("Uploaded your "+D.length+" items to the cloud ✓")}
- else if(!quiet||!PEND.length){const nd=r.data.map(z=>{const x=fromDoc({...z.data,id:z.id});x.ver=z.updated_at;return x});if(quiet&&sameList(nd,D))return;D=nd;lsSave()}
- ready=true;if(!quiet)cur=null;render();if(!quiet)checkAlerts()}
-function subscribe(){if(live)sb.removeChannel(live);live=sb.channel("rem").on("postgres_changes",{event:"*",schema:"public",table:"reminders"},p=>{
+ const rows=r.data.filter(z=>z.id.indexOf("prd_")!==0),prow=r.data.filter(z=>z.id.indexOf("prd_")===0);
+ if(rows.length===0&&D.length>0&&canEdit()&&!quiet){D.forEach(x=>addPend("up",x.id));await flush();toast("Uploaded your "+D.length+" items to the cloud ✓")}
+ else if(!quiet||!PEND.length){const nd=rows.map(z=>{const x=fromDoc({...z.data,id:z.id});x.ver=z.updated_at;return x});if(quiet&&sameList(nd,D))return;D=nd;lsSave()}
+ if(prow.length===0&&PROD.length>0&&canEdit()&&!quiet){PROD.forEach(x=>addPend("up",x.id,"added",pName(x),""));await flush()}
+ else if(!quiet||!PEND.length){const np=prow.map(z=>({...z.data,id:z.id,ver:z.updated_at}));if(!(quiet&&sameList(np,PROD))){PROD=np;prodSave()}}
+ ready=true;if(!quiet)cur=null;render();pdRender();if(!quiet)checkAlerts()}
+function subscribe(){if(live)sb.removeChannel(live);live=sb.channel("rem").on("postgres_changes",{event:"*",schema:"public",table:"reminders"},p=>{const pid=p.eventType==="DELETE"?(p.old&&p.old.id):(p.new&&p.new.id);
+  if(pid&&String(pid).indexOf("prd_")===0){if(p.eventType==="DELETE")PROD=PROD.filter(z=>z.id!==pid);else{const o=p.new&&p.new.data;if(!o)return;const x={...o,id:pid,ver:p.new.updated_at},i=PROD.findIndex(z=>z.id===pid);if(i<0)PROD.push(x);else PROD[i]=x}prodSave();pdRender();return}
   if(p.eventType==="DELETE"){D=D.filter(z=>z.id!==p.old.id)}
   else{const o=p.new&&p.new.data;if(!o)return;const x=fromDoc({...o,id:p.new.id});x.ver=p.new.updated_at;const i=D.findIndex(z=>z.id===x.id);if(i<0)D.push(x);else D[i]=x}
   lsSave();render()}).subscribe()}
@@ -871,10 +993,12 @@ document.addEventListener("change",async e=>{const em=e.target.dataset&&e.target
  const r=await sb.from("members").update({role:e.target.value}).eq("email",em);if(r.error)toast(r.error.message);else toast("Role updated ✓");loadTeam()});
 $("rf").onchange=async e=>{const f=e.target.files[0];e.target.value="";if(!f)return;if(!canEdit()){toast("This is a view-only account");return}
  try{const o=JSON.parse(await f.text()),it=Array.isArray(o)?o:o.items;if(!Array.isArray(it)||!it.length||!it.every(x=>x&&x.id&&x.d&&typeof x.t==="string"&&!isNaN(P(String(x.d)).getTime())))throw 0;
- if(!confirm("Replace the current list ("+D.length+" items) with the backup ("+it.length+" items)?"))return;await replaceAll(it.map(x=>({...x,id:String(x.id),ty:x.ty||"Other",cur:x.cur||"AED",c:x.c||"",a:+x.a||0,note:x.note||"",rep:!!x.rep,done:!!x.done})));cur=null;render();toast("Backup restored ✓")}catch(er){toast("That file is not a valid backup")}};
-(async()=>{try{const raw=localStorage.getItem(LS);if(raw){D=JSON.parse(raw);if(!Array.isArray(D))D=[]}}catch(e){D=[]}
+ if(!confirm("Replace the current list ("+D.length+" items) with the backup ("+it.length+" items)?"))return;await replaceAll(it.map(x=>({...x,id:String(x.id),ty:x.ty||"Other",cur:x.cur||"AED",c:x.c||"",a:+x.a||0,note:x.note||"",rep:!!x.rep,done:!!x.done})));if(!Array.isArray(o)&&Array.isArray(o.products))o.products.filter(x=>x&&x.id&&String(x.id).indexOf("prd_")===0).forEach(x=>{const z={...x};delete z.ver;putP(z,1)});cur=null;render();toast("Backup restored ✓")}catch(er){toast("That file is not a valid backup")}};
+(async()=>{try{PROD=JSON.parse(localStorage.getItem("berakah.prod")||"[]");if(!Array.isArray(PROD))PROD=[]}catch(e){PROD=[]}
+ try{const raw=localStorage.getItem(LS);if(raw){D=JSON.parse(raw);if(!Array.isArray(D))D=[]}}catch(e){D=[]}
  try{PEND=JSON.parse(localStorage.getItem(LS+".pend")||"[]")}catch(e){PEND=[]}
  if(window.berakah&&!D.length){try{const tx=await window.berakah.load();if(tx){const o=JSON.parse(tx);if(o&&Array.isArray(o.items))D=o.items}}catch(e){}}
+ if(window.berakah&&!PROD.length){try{const tx=await window.berakah.load();if(tx){const o=JSON.parse(tx);if(o&&Array.isArray(o.products))PROD=o.products}}catch(e){}}
  ready=true;applyRole();render();
  const ok=CFG.SUPABASE_URL&&CFG.SUPABASE_URL.indexOf("https://")===0&&CFG.SUPABASE_ANON_KEY&&CFG.SUPABASE_ANON_KEY.indexOf("PASTE")<0&&window.supabase;
  if(ok){sb=window.supabase.createClient(CFG.SUPABASE_URL,CFG.SUPABASE_ANON_KEY);ROLE="viewer";applyRole();setStatus();
